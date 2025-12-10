@@ -534,40 +534,78 @@
 
         
 <div class="widget co2-reduction-widget">
-            <h3>🌎 Estimated CO₂ Reduction</h3>
-            <p style="font-size: 1.1em; color: #444; margin-bottom: 25px;">
-                Your family's amazing efforts have helped the planet!
-            </p>
+    <h3>🌍 Estimated CO₂ Reduction</h3>
+    
+    <div class="reduction-summary-grid">
 
-            <div class="savings-container">
-                
-                <div class="savings-metric">
-                    <p>Water Saved 💧</p>
-                    <strong>520L</strong>
-                    <div class="bar-graph-container bar-water">
-                        <div class="bar-fill" style="width: 52%;"></div>
-                    </div>
-                </div>
-
-                <div class="savings-metric">
-                    <p>Energy Saved ⚡</p>
-                    <strong>950 kWh</strong>
-                    <div class="bar-graph-container bar-energy">
-                        <div class="bar-fill" style="width: 79%;"></div>
-                    </div>
-                </div>
-
-                <div class="savings-metric">
-                    <p>Trees Planted 🌴</p>
-                    <strong>25 Trees</strong>
-                    <div class="bar-graph-container bar-trees">
-                        <div class="bar-fill" style="width: 83%;"></div>
-                    </div>
-                </div>
-
+        <div class="metric-card water-card">
+            <div class="doughnut-chart" style="--percent: 98.38; --color: #2196F3; --bg-color: #e3f2fd;">
+                <span class="value">98.38%</span>
+                <span class="label">💧 Water Saved</span>
             </div>
-            
-            <p style="margin-top: 30px; font-style: italic; color: var(--mid-green);">
-                These actions are estimated to have reduced your carbon footprint by 2,500 kg of CO₂!
-            </p>
+            <p class="data-point"><strong>303,000L</strong> of Water Saved</p>
         </div>
+
+        <div class="metric-card energy-card">
+            <h4 class="graph-title">⚡ Energy Saved (kWh)</h4>
+            <div class="bar-chart-container">
+                <div class="bar-group">
+                    <div class="bar" style="--height: 10%;"></div><span class="bar-label">Jan</span>
+                </div>
+                <div class="bar-group">
+                    <div class="bar" style="--height: 15%;"></div><span class="bar-label">Feb</span>
+                </div>
+                <div class="bar-group">
+                    <div class="bar" style="--height: 20%;"></div><span class="bar-label">Mar</span>
+                </div>
+                <div class="bar-group">
+                    <div class="bar" style="--height: 25%;"></div><span class="bar-label">Apr</span>
+                </div>
+                <div class="bar-group">
+                    <div class="bar" style="--height: 28%;"></div><span class="bar-label">May</span>
+                </div>
+                <div class="bar-group">
+                    <div class="bar" style="--height: 35%;"></div><span class="bar-label">Jun</span>
+                </div>
+                <div class="bar-group">
+                    <div class="bar" style="--height: 40%;"></div><span class="bar-label">Jul</span>
+                </div>
+                <div class="bar-group">
+                    <div class="bar" style="--height: 30%;"></div><span class="bar-label">Aug</span>
+                </div>
+                <div class="bar-group">
+                    <div class="bar" style="--height: 45%;"></div><span class="bar-label">Sep</span>
+                </div>
+                <div class="bar-group">
+                    <div class="bar" style="--height: 50%;"></div><span class="bar-label">Oct</span>
+                </div>
+                <div class="bar-group">
+                    <div class="bar" style="--height: 60%;"></div><span class="bar-label">Nov</span>
+                </div>
+                <div class="bar-group">
+                    <div class="bar" style="--height: 70%;"></div><span class="bar-label">Dec</span>
+                </div>
+            </div>
+            <p class="data-point"><strong>18,904 kWh</strong> Saved out of 200,000 kWh Target</p>
+        </div>
+
+        <div class="metric-card tree-card">
+            <h4 class="graph-title">🌴 Trees Planted (Total 25)</h4>
+            <div class="pictograph-container">
+                <div class="tree-month">
+                    <span class="month-label">Jan-Mar:</span>
+                    <span class="tree-icons">🌳🌳🌳🌳🌳</span> </div>
+                <div class="tree-month">
+                    <span class="month-label">Apr-Jun:</span>
+                    <span class="tree-icons">🌳🌳🌳🌳🌳🌳🌳</span> </div>
+                <div class="tree-month">
+                    <span class="month-label">Jul-Sep:</span>
+                    <span class="tree-icons">🌳🌳🌳</span> </div>
+                <div class="tree-month">
+                    <span class="month-label">Oct-Dec:</span>
+                    <span class="tree-icons">🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳</span> </div>
+            </div>
+            <p class="data-point"><strong>25 Trees</strong> Planted (Year-to-Date)</p>
+        </div>
+    </div>
+</div>
