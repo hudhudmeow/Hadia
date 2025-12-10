@@ -1,421 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco-League Family Dashboard</title>
-    <style>
-        /* Color Variables */
-        :root {
-            --dark-green: #004d40;
-            --mid-green: #4caf50;
-            --light-green: #e8f5e9;
-            --accent-green: #81c784;
-            --white: #ffffff;
-            --gray-light: #f5f5f5;
-            --activity-green: #eaf8ed; /* Light background for activity items */
-            --point-green: #1a7e4b; /* Darker green for points text */
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-League Family Dashboard</title>
+    <style>
+        /* Color Variables */
+        :root {
+            --dark-green: #004d40;
+            --mid-green: #4caf50;
+            --light-green: #e8f5e9;
+            --accent-green: #81c784;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --activity-green: #eaf8ed; /* Light background for activity items */
+            --point-green: #1a7e4b; /* Darker green for points text */
+        }
 
-        /* Base Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light-green);
-            color: var(--dark-green);
-        }
-        .header {
-            background-color: var(--dark-green);
-            color: var(--white);
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 1.8em;
-        }
+        /* Base Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-green);
+            color: var(--dark-green);
+        }
+        .header {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
 
-        /* Dashboard Grid Layout (Now 4 columns for flexibility) */
-        .dashboard-container {
-            display: grid;
-            /* Defined 4 columns, which helps center the main element */
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .widget {
-            background-color: var(--white);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        .widget:hover {
-            transform: translateY(-3px);
-        }
-        .widget h3 {
-            color: var(--mid-green);
-            margin-top: 0;
-            border-bottom: 2px solid var(--light-green);
-            padding-bottom: 10px;
-        }
+        /* Dashboard Grid Layout (Now 4 columns for flexibility) */
+        .dashboard-container {
+            display: grid;
+            /* Defined 4 columns, which helps center the main element */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .widget {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .widget:hover {
+            transform: translateY(-3px);
+        }
+        .widget h3 {
+            color: var(--mid-green);
+            margin-top: 0;
+            border-bottom: 2px solid var(--light-green);
+            padding-bottom: 10px;
+        }
 
-        /* --- 1. Family Competition Widget Styling (LARGE AND CENTERED) --- */
-        .competition-widget {
-            /* Span all 4 columns to be full width and centered at the top */
-            grid-column: 1 / 5;
-            text-align: center;
-        }
-        .competition-widget h3 {
-            font-size: 2.2em; /* Larger title */
-            border-bottom: 3px solid var(--accent-green);
-            padding-bottom: 15px;
-        }
-        .competition-widget > p:first-of-type {
-            font-size: 1.4em;
-            font-weight: bold;
-            color: var(--dark-green);
-        }
-        .league-progress {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 30px 50px; /* Increased margin for visual space */
-        }
-        .trophy {
-            font-size: 4em; /* Larger trophy icons */
-            padding: 0 10px;
-        }
-        .progress-line {
-            flex-grow: 1;
-            height: 15px; /* Thicker progress line */
-            background: linear-gradient(to right, #cd7f32 0%, #cd7f32 30%, var(--gray-light) 30%, var(--gray-light) 100%);
-            border-radius: 8px;
-            margin: 0 25px;
-            position: relative;
-        }
-        /* Adjusted positioning and size for the point counter */
-        .progress-line::after {
-            content: '3600/10000 Pts';
-            position: absolute;
-            top: -35px; /* Moved up */
-            left: 30%;
-            transform: translateX(-50%);
-            font-size: 1.2em; /* Larger text */
-            font-weight: bold;
-            color: var(--dark-green);
-            padding: 5px 10px;
-            background-color: var(--light-green);
-            border-radius: 5px;
-        }
-        .competition-widget > p:last-of-type {
-            font-size: 1.1em;
-            margin-bottom: 30px;
-        }
-        .individual-scores {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .individual-scores h4 {
-            font-size: 1.5em; /* Larger sub-title */
-            color: var(--dark-green);
-            margin-top: 25px;
-            border-top: 2px dashed var(--light-green);
-            padding-top: 15px;
-        }
-        .score-list {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-        }
-        .score-list li {
-            padding: 10px 0; /* Increased padding */
-            border-bottom: 1px dotted var(--light-green);
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.1em;
-        }
-        .score-list li strong {
-            color: var(--mid-green);
-        }
-        
-        /* --- Widget Positioning (Shifted Down) --- */
-        
-        .recent-activity-widget {
-            grid-column: 1 / 2; /* Left column */
-            order: 2; /* Ensures it appears below the main widget */
-        }
-        .verify-deed-widget {
-            grid-column: 2 / 3; /* Second column */
-            order: 2;
-        }
-        .achievements-widget {
-            grid-column: 3 / 5; /* Spans two columns on the right */
-            order: 2;
-        }
-        .rewards-widget {
-            grid-column: 1 / 5; /* Full width under the second row */
-            order: 3;
-        }
-        .co2-reduction-widget {
-            grid-column: 1 / 5; /* Full width at the bottom */
-            order: 4;
-        }
+        /* --- 1. Family Competition Widget Styling (LARGE AND CENTERED) --- */
+        .competition-widget {
+            /* Span all 4 columns to be full width and centered at the top */
+            grid-column: 1 / 5;
+            text-align: center;
+        }
+        .competition-widget h3 {
+            font-size: 2.2em; /* Larger title */
+            border-bottom: 3px solid var(--accent-green);
+            padding-bottom: 15px;
+        }
+        .competition-widget > p:first-of-type {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--dark-green);
+        }
+        .league-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 50px; /* Increased margin for visual space */
+        }
+        .trophy {
+            font-size: 4em; /* Larger trophy icons */
+            padding: 0 10px;
+        }
+        .progress-line {
+            flex-grow: 1;
+            height: 15px; /* Thicker progress line */
+            background: linear-gradient(to right, #cd7f32 0%, #cd7f32 30%, var(--gray-light) 30%, var(--gray-light) 100%);
+            border-radius: 8px;
+            margin: 0 25px;
+            position: relative;
+        }
+        /* Adjusted positioning and size for the point counter */
+        .progress-line::after {
+            content: '3600/10000 Pts';
+            position: absolute;
+            top: -35px; /* Moved up */
+            left: 30%;
+            transform: translateX(-50%);
+            font-size: 1.2em; /* Larger text */
+            font-weight: bold;
+            color: var(--dark-green);
+            padding: 5px 10px;
+            background-color: var(--light-green);
+            border-radius: 5px;
+        }
+        .competition-widget > p:last-of-type {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+        .individual-scores {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .individual-scores h4 {
+            font-size: 1.5em; /* Larger sub-title */
+            color: var(--dark-green);
+            margin-top: 25px;
+            border-top: 2px dashed var(--light-green);
+            padding-top: 15px;
+        }
+        .score-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        .score-list li {
+            padding: 10px 0; /* Increased padding */
+            border-bottom: 1px dotted var(--light-green);
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1em;
+        }
+        .score-list li strong {
+            color: var(--mid-green);
+        }
+        
+        /* --- Widget Positioning (Shifted Down) --- */
+        
+        .recent-activity-widget {
+            grid-column: 1 / 2; /* Left column */
+            order: 2; /* Ensures it appears below the main widget */
+        }
+        .verify-deed-widget {
+            grid-column: 2 / 3; /* Second column */
+            order: 2;
+        }
+        /* UPDATED: Change achievements-widget column span to 3 / 5 */
+        .achievements-widget {
+            grid-column: 3 / 5; /* Spans two columns on the right */
+            order: 2;
+        }
+        .rewards-widget {
+            grid-column: 1 / 5; /* Full width under the second row */
+            order: 3;
+        }
+        .co2-reduction-widget {
+            grid-column: 1 / 5; /* Full width at the bottom */
+            order: 4;
+        }
 
-        /* Keep internal widget styles the same, just add them below the new ordering */
-        /* --- Recent Activity Widget Styling --- */
-        .activity-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--activity-green);
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            border-left: 5px solid var(--mid-green);
-        }
-        /* ... (rest of the activity styles) ... */
+        /* Keep internal widget styles the same, just add them below the new ordering */
+        /* --- Recent Activity Widget Styling --- */
+        .activity-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--activity-green);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 5px solid var(--mid-green);
+        }
+        /* ... (rest of the activity styles) ... */
 
-        /* --- Achievements Widget Styling --- */
-        .achievement-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            padding-top: 10px;
-        }
-        /* ... (rest of the achievement styles) ... */
+        /* --- Achievements Widget Styling (UPDATED TO MATCH CODE 2) --- */
+        .achievement-grid {
+            /* Min width changed from 180px to 200px to match code 2 */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding-top: 10px;
+        }
+        /* ADDED: Achievement Card Styles from Code 2 */
+        .achievement-card {
+            background-color: var(--gray-light);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--light-green);
+        }
+        /* ADDED: Achievement Icon Styles from Code 2 */
+        .achievement-icon {
+            font-size: 2.5em;
+            color: var(--mid-green);
+            margin-bottom: 10px;
+            display: block;
+        }
+        /* ADDED: Achievement Card Text Styles from Code 2 */
+        .achievement-card p {
+            margin: 5px 0 0;
+            font-size: 0.85em;
+            color: #666;
+        }
+        .achievement-card strong {
+            display: block;
+            font-size: 1em;
+            color: var(--dark-green);
+            margin-bottom: 5px;
+        }
 
-        /* --- Verify Deed Widget Styling --- */
-        /* ... (styles remain the same) ... */
 
-        /* --- Rewards Widget Styling --- */
-        /* ... (styles remain the same) ... */
+        /* --- Verify Deed Widget Styling --- */
+        /* ... (styles remain the same) ... */
+        /* Added from Code 2 to ensure style completeness for the original widget: */
+        .deed-form label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        .deed-form select, .deed-form button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        .deed-form select {
+            border: 1px solid #ccc;
+            background-color: var(--gray-light);
+        }
+        .deed-form button {
+            background-color: var(--mid-green);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .deed-form button:hover {
+            background-color: var(--accent-green);
+        }
 
-        /* --- CO2 Reduction Widget Styling --- */
-        /* ... (styles remain the same) ... */
+        /* --- Rewards Widget Styling --- */
+        /* ... (styles remain the same) ... */
 
-        /* Responsive adjustments */
-        @media (max-width: 1000px) {
-            .dashboard-container {
-                grid-template-columns: 1fr; /* Single column layout on tablets/mobile */
-            }
-            .widget {
-                grid-column: 1 / 2 !important; /* Force single column */
-            }
-            /* Re-order elements for mobile view */
-            .competition-widget { order: 1; }
-            .verify-deed-widget { order: 2; }
-            .recent-activity-widget { order: 3; }
-            .achievements-widget { order: 4; }
-            .rewards-widget { order: 5; }
-            .co2-reduction-widget { order: 6; }
-            
-            .league-progress { margin: 30px 10px; }
-            .trophy { font-size: 3em; }
-        }
-    </style>
+        /* --- CO2 Reduction Widget Styling --- */
+        /* ... (styles remain the same) ... */
+
+        /* Responsive adjustments */
+        @media (max-width: 1000px) {
+            .dashboard-container {
+                grid-template-columns: 1fr; /* Single column layout on tablets/mobile */
+            }
+            .widget {
+                grid-column: 1 / 2 !important; /* Force single column */
+            }
+            /* Re-order elements for mobile view */
+            .competition-widget { order: 1; }
+            .verify-deed-widget { order: 2; }
+            .recent-activity-widget { order: 3; }
+            /* UPDATED: Change mobile order to match Code 2's implied change (to the top) */
+            .achievements-widget { order: 4; }
+            .rewards-widget { order: 5; }
+            .co2-reduction-widget { order: 6; }
+            
+            .league-progress { margin: 30px 10px; }
+            .trophy { font-size: 3em; }
+        }
+    </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>🌳 Eco-League Dashboard</h1>
-        <p>Welcome, The AlHashimi Family!</p>
-    </div>
+    <div class="header">
+        <h1>🌳 Eco-League Dashboard</h1>
+        <p>Welcome, The AlHashimi Family!</p>
+    </div>
 
-    <div class="dashboard-container">
+    <div class="dashboard-container">
 
-        <div class="widget competition-widget">
-            <h3>🥇 Family Competition: League Progress</h3>
-            
-            <p>Current League: Gold</p>
+        <div class="widget competition-widget">
+            <h3>🥇 Family Competition: League Progress</h3>
+            
+            <p>Current League: Gold</p>
 
-            <div class="league-progress">
-                <span class="trophy" style="color: #CD7F32;">🥉</span> 
-                <div class="progress-line"></div>
-                <span class="trophy" style="color: #B9F2FF;">💎</span> 
-            </div>
-            <p style="font-size: 1.1em;">3600 out of 10000 points on the way to the Diamond League!</p>
+            <div class="league-progress">
+                <span class="trophy" style="color: #CD7F32;">🥉</span> 
+                <div class="progress-line"></div>
+                <span class="trophy" style="color: #B9F2FF;">💎</span> 
+            </div>
+            <p style="font-size: 1.1em;">3600 out of 10000 points on the way to the Diamond League!</p>
 
-            <div class="individual-scores">
-                <h4>Individual Family Scores</h4>
-                <ul class="score-list">
-                    <li>Saud (Father) <span><strong>950 pts</strong></span></li>
-                    <li>Khulood (Mother) <span><strong>900 pts</strong></span></li>
-                    <li>Khultoom (Daughter) <span><strong>850 pts</strong></span></li>
-                    <li>Abdalla (Son) <span><strong>900 pts</strong></span></li>
-                    <li style="font-weight: bold; border-top: 2px solid var(--mid-green); margin-top: 10px; padding-top: 10px;">Family Total <span><strong>3600 pts</strong></span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="widget recent-activity-widget">
-            <h3>📅 Recent Activity</h3>
-            
-            <div class="activity-item">
-                <div class="activity-details">
-                    <p>Completed the "Reduction Adventure" challenge</p>
-                    <span>Dec 5</span>
-                </div>
-                <span class="activity-points">+150 points</span>
-            </div>
+            <div class="individual-scores">
+                <h4>Individual Family Scores</h4>
+                <ul class="score-list">
+                    <li>Saud (Father) <span><strong>950 pts</strong></span></li>
+                    <li>Khulood (Mother) <span><strong>900 pts</strong></span></li>
+                    <li>Khultoom (Daughter) <span><strong>850 pts</strong></span></li>
+                    <li>Abdalla (Son) <span><strong>900 pts</strong></span></li>
+                    <li style="font-weight: bold; border-top: 2px solid var(--mid-green); margin-top: 10px; padding-top: 10px;">Family Total <span><strong>3600 pts</strong></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="widget recent-activity-widget">
+            <h3>📅 Recent Activity</h3>
+            
+            <div class="activity-item">
+                <div class="activity-details">
+                    <p>Completed the "Reduction Adventure" challenge</p>
+                    <span>Dec 5</span>
+                </div>
+                <span class="activity-points">+150 points</span>
+            </div>
 
-            <div class="activity-item">
-                <div class="activity-details">
-                    <p>Earned bonus points for consistent participation</p>
-                    <span>Nov 30</span>
-                </div>
-                <span class="activity-points">+75 points</span>
-            </div>
+            <div class="activity-item">
+                <div class="activity-details">
+                    <p>Earned bonus points for consistent participation</p>
+                    <span>Nov 30</span>
+                </div>
+                <span class="activity-points">+75 points</span>
+            </div>
 
-            <div class="activity-item">
-                <div class="activity-details">
-                    <p>Advanced from points for consistent participation</p>
-                    <span>Nov 22</span>
-                </div>
-                <span class="activity-points">+150 points</span>
-            </div>
-            
-            <div class="activity-item">
-                <div class="activity-details">
-                    <p>Completed 'No-Plastic Week' challenge</p>
-                    <span>Nov 17</span>
-                </div>
-                <span class="activity-points">+300 points</span>
-            </div>
-        </div>
-        <div class="widget verify-deed-widget" id="deed-widget">
-            <h3>✅ Verify Your Deed</h3> 
-            
-            <div class="deed-form" id="deed-form">
-                <p>Select your completed action and upload proof.</p>
-                
-                <label for="deed-type">Green Action Completed:</label>
-                <select id="deed-type" name="deed-type">
-                    <option value="" disabled selected>      Choose an Action      </option>
-                    <option value="reused-water">💧 Reused water for plants/cleaning</option>
-                    <option value="public-transport">🚌 Used public transport or carpooled</option>
-                    <option value="reduced-electricity">💡 Reduced electricity consumption (off-peak)</option>
-                    <option value="recycled-item">♻️ Recycled a large item/bulk material</option>
-                    <option value="plastic-free">🛒 Completed a plastic-free shopping trip</option>
-                    <option value="planted-tree">🌱 Planted a tree or garden starter</option>
-                    <option value="composted">🗑️ Started or added to compost pile</option>
-                </select>
-                
-                <label for="proof-upload">Upload Photo Proof:</label>
-                <input type="file" id="proof-upload" accept="image/*" style="width: 100%; margin-bottom: 20px;">
+            <div class="activity-item">
+                <div class="activity-details">
+                    <p>Advanced from points for consistent participation</p>
+                    <span>Nov 22</span>
+                </div>
+                <span class="activity-points">+150 points</span>
+            </div>
+            
+            <div class="activity-item">
+                <div class="activity-details">
+                    <p>Completed 'No-Plastic Week' challenge</p>
+                    <span>Nov 17</span>
+                </div>
+                <span class="activity-points">+300 points</span>
+            </div>
+        </div>
+        <div class="widget verify-deed-widget" id="deed-widget">
+            <h3>✅ Verify Your Deed</h3> 
+            
+            <div class="deed-form" id="deed-form">
+                <p>Select your completed action and upload proof.</p>
+                
+                <label for="deed-type">Green Action Completed:</label>
+                <select id="deed-type" name="deed-type">
+                    <option value="" disabled selected>      Choose an Action      </option>
+                    <option value="reused-water">💧 Reused water for plants/cleaning</option>
+                    <option value="public-transport">🚌 Used public transport or carpooled</option>
+                    <option value="reduced-electricity">💡 Reduced electricity consumption (off-peak)</option>
+                    <option value="recycled-item">♻️ Recycled a large item/bulk material</option>
+                    <option value="plastic-free">🛒 Completed a plastic-free shopping trip</option>
+                    <option value="planted-tree">🌱 Planted a tree or garden starter</option>
+                    <option value="composted">🗑️ Started or added to compost pile</option>
+                </select>
+                
+                <label for="proof-upload">Upload Photo Proof:</label>
+                <input type="file" id="proof-upload" accept="image/*" style="width: 100%; margin-bottom: 20px;">
 
-                <button>Submit for Verification</button>
-                <p style="font-size: 0.8em; text-align: center; color: gray;">AI Assissted Verification</p>
-            </div>
-        </div>
-        <div class="widget achievements-widget">
-            <h3>🌟 Achievements</h3>
-            <hr style="border: 0; border-top: 1px dashed var(--light-green); margin: 10px 0;">
+                <button>Submit for Verification</button>
+                <p style="font-size: 0.8em; text-align: center; color: gray;">AI Assissted Verification</p>
+            </div>
+        </div>
+        <div class="widget achievements-widget">
+            <h3>🌟 Achievements</h3>
+            <hr style="border: 0; border-top: 1px dashed var(--light-green); margin: 10px 0;">
 
-            <div class="achievement-grid">
-                <div class="achievement-card">
-                    <span class="achievement-icon">🌴</span>
-                    <strong>Nature</strong>
-                    <p>Planted 10 trees this month</p>
-                    <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+100 points</p>
-                </div>
-                <div class="achievement-card">
-                    <span class="achievement-icon">🛢️</span>
-                    <strong>Reusing</strong>
-                    <p>Reused 2L of cooking oil</p>
-                    <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+250 points</p>
-                </div>
-                <div class="achievement-card">
-                    <span class="achievement-icon">👨🏽‍👩🏻‍👧🏼‍🧒🏼</span>
-                    <strong>Team Spirit</strong>
-                    <p>All family members completed a challenge together</p>
-                    <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+300 points</p>
-                </div>
-                <div class="achievement-card">
-                    <span class="achievement-icon">🚇</span>
-                    <strong>RTA Public Transport</strong>
-                    <p>Reduced CO2 by 500kg</p>
-                    <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+500 points</p>
-                </div>
-            </div>
-        </div>
-        <div class="widget rewards-widget">
-            <h3>🏆 Rewards & Recognition: Community Leaderboard</h3>
-            <p>See how your family compares! Top families earn exclusive rewards from local eco-friendly businesses!</p>
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <span class="achievement-icon">🌴</span>
+                    <strong>Nature</strong>
+                    <p>Planted 10 trees this month</p>
+                    <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+100 points</p>
+                </div>
+                <div class="achievement-card">
+                    <span class="achievement-icon">🛢️</span>
+                    <strong>Reusing</strong>
+                    <p>Reused 2L of cooking oil</p>
+                    <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+250 points</p>
+                </div>
+                <div class="achievement-card">
+                    <span class="achievement-icon">👨🏽‍👩🏻‍👧🏼‍🧒🏼</span>
+                    <strong>Team Spirit</strong>
+                    <p>All family members completed a challenge together</p>
+                    <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+300 points</p>
+                </div>
+                <div class="achievement-card">
+                    <span class="achievement-icon">🚇</span>
+                    <strong>RTA Public Transport</strong>
+                    <p>Reduced CO2 by 500kg</p>
+                    <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+500 points</p>
+                </div>
+            </div>
+        </div>
+        <div class="widget rewards-widget">
+            <h3>🏆 Rewards & Recognition: Community Leaderboard</h3>
+            <p>See how your family compares! Top families earn exclusive rewards from local eco-friendly businesses!</p>
 
-            <table class="leaderboard-table">
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Family Name</th>
-                        <th>League</th>
-                        <th>Total Points</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>The Jeons</td>
-                        <td>Diamond</td>
-                        <td>9005</td>
-                    </tr>
-                    <tr>
-                        <td style="background-color: var(--accent-green); color: var(--dark-green); font-weight: bold;">2</td>
-                        <td style="background-color: var(--accent-green); color: var(--dark-green); font-weight: bold;">The AlHashimis</td>
-                        <td style="background-color: var(--accent-green); color: var(--dark-green); font-weight: bold;">Gold</td>
-                        <td style="background-color: var(--accent-green); color: var(--dark-green); font-weight: bold;">3600</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>The Riveras</td>
-                        <td>Silver</td>
-                        <td>2100</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>The Sharmas</td>
-                        <td>Bronze</td>
-                        <td>1355</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="text-align: right; margin-top: 15px;"><a href="#" style="color: var(--dark-green);">View all Rewards & Partner Offers &rarr;</a></p>
-        </div>
-        <div class="widget co2-reduction-widget">
-            <h3>💨 Estimated CO₂ Reduction</h3>
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Family Name</th>
+                        <th>League</th>
+                        <th>Total Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>The Jeons</td>
+                        <td>Diamond</td>
+                        <td>9005</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: var(--accent-green); color: var(--dark-green); font-weight: bold;">2</td>
+                        <td style="background-color: var(--accent-green); color: var(--dark-green); font-weight: bold;">The AlHashimis</td>
+                        <td style="background-color: var(--accent-green); color: var(--dark-green); font-weight: bold;">Gold</td>
+                        <td style="background-color: var(--accent-green); color: var(--dark-green); font-weight: bold;">3600</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>The Riveras</td>
+                        <td>Silver</td>
+                        <td>2100</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>The Sharmas</td>
+                        <td>Bronze</td>
+                        <td>1355</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="text-align: right; margin-top: 15px;"><a href="#" style="color: var(--dark-green);">View all Rewards & Partner Offers &rarr;</a></p>
+        </div>
+        <div class="widget co2-reduction-widget">
+            <h3>💨 Estimated CO₂ Reduction</h3>
 
-            <div class="chart-placeholder">
-                <div class="line-graph"></div>
-                <div class="pie-chart">
-                    <div class="pie-chart-inner">
-                        Total Impact Score<br>
-                        <span style="font-size: 1.5em; color: var(--mid-green); font-weight: bold;">85%</span>
-                    </div>
-                </div>
-            </div>
+            <div class="chart-placeholder">
+                <div class="line-graph"></div>
+                <div class="pie-chart">
+                    <div class="pie-chart-inner">
+                        Total Impact Score<br>
+                        <span style="font-size: 1.5em; color: var(--mid-green); font-weight: bold;">85%</span>
+                    </div>
+                </div>
+            </div>
 
-            <div class="metrics-bar">
-                <div class="metric">
-                    <span class="metric-icon">💧</span>
-                    <p style="margin: 0;">Water Saved</p>
-                    <span class="metric-value">5,200 L</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-icon">⚡</span>
-                    <p style="margin: 0;">Energy Saved</p>
-                    <span class="metric-value">950 kWh</span>
-                </div>
-                <div class="metric">
-                    <span class="metric-icon">🌳</span>
-                    <p style="margin: 0;">Trees Planted Equivalent</p>
-                    <span class="metric-value">25</span>
-                </div>
-            </div>
-        </div>
-        </div>
-</body>
-</html>
+            <div class="metrics-bar">
+                <div class="metric">
+                    <span class="metric-icon">💧</span>
+                    <p style="margin: 0;">Water Saved</p>
+                    <span class="metric-value">5,200 L</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-icon">⚡</span>
+                    <p style="margin: 0;">Energy Saved</p>
+                    <span class="metric-value">950 kWh</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-icon">🌳</span>
+                    <p style="margin
