@@ -13,6 +13,8 @@
             --accent-green: #81c784;
             --white: #ffffff;
             --gray-light: #f5f5f5;
+            --activity-green: #eaf8ed; /* Light background for activity items */
+            --point-green: #1a7e4b; /* Darker green for points text */
         }
 
         /* Base Styles */
@@ -36,13 +38,13 @@
             font-size: 1.8em;
         }
 
-        /* Dashboard Grid Layout */
+        /* Dashboard Grid Layout (Updated to 3 columns) */
         .dashboard-container {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two columns */
+            grid-template-columns: 1fr 2fr 1.5fr; /* Narrow Left, Wide Center, Medium Right */
             gap: 20px;
             padding: 20px;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         .widget {
@@ -62,9 +64,9 @@
             padding-bottom: 10px;
         }
 
-        /* 1. Family Competition Widget Styling */
+        /* --- 1. Family Competition Widget Styling (Moved to top-left) --- */
         .competition-widget {
-            grid-column: 1 / 2; /* Takes the left column */
+            grid-column: 1 / 2;
         }
         .league-progress {
             display: flex;
@@ -78,22 +80,21 @@
         .progress-line {
             flex-grow: 1;
             height: 10px;
-            background: linear-gradient(to right, #cd7f32 0%, #cd7f32 30%, var(--gray-light) 30%, var(--gray-light) 100%); /* Example: 30% progress (Bronze to Gold) */
+            background: linear-gradient(to right, #cd7f32 0%, #cd7f32 30%, var(--gray-light) 30%, var(--gray-light) 100%);
             border-radius: 5px;
             margin: 0 15px;
             position: relative;
         }
         .progress-line::after {
-            content: '3000/10000 Pts'; /* Example current score */
+            content: '3000/10000 Pts';
             position: absolute;
             top: -25px;
-            left: 30%; /* Matches progress value */
+            left: 30%;
             transform: translateX(-50%);
             font-size: 0.9em;
             font-weight: bold;
             color: var(--dark-green);
         }
-
         .individual-scores h4 {
             color: var(--dark-green);
             margin-top: 25px;
@@ -115,20 +116,94 @@
             color: var(--mid-green);
         }
 
-        /* 2. Verify Deed Widget Styling (NOW ALWAYS VISIBLE) */
-        .verify-deed-widget {
-            grid-column: 2 / 3; /* Takes the right column */
-            cursor: default; /* No longer clickable to expand/collapse */
+        /* --- New: Recent Activity Widget Styling (Stacked on left) --- */
+        .recent-activity-widget {
+            grid-column: 1 / 2;
+            padding: 15px;
         }
-        /* Removed .deed-form max-height/overflow CSS that controlled collapse */
+        .activity-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--activity-green);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 5px solid var(--mid-green);
+        }
+        .activity-item:last-child {
+            margin-bottom: 0;
+        }
+        .activity-details {
+            text-align: left;
+            flex-grow: 1;
+        }
+        .activity-details p {
+            margin: 0;
+            font-size: 0.95em;
+            font-weight: bold;
+        }
+        .activity-details span {
+            font-size: 0.8em;
+            color: gray;
+            font-weight: normal;
+        }
+        .activity-points {
+            font-weight: bold;
+            color: var(--point-green);
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        /* --- New: Achievements Widget Styling (Center Column) --- */
+        .achievements-widget {
+            grid-column: 2 / 4; /* Spanning two columns for image layout */
+        }
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding-top: 10px;
+        }
+        .achievement-card {
+            background-color: var(--gray-light);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--light-green);
+        }
+        .achievement-icon {
+            font-size: 2.5em;
+            color: var(--mid-green);
+            margin-bottom: 10px;
+            display: block;
+        }
+        .achievement-card p {
+            margin: 5px 0 0;
+            font-size: 0.85em;
+            color: #666;
+        }
+        .achievement-card strong {
+            display: block;
+            font-size: 1em;
+            color: var(--dark-green);
+            margin-bottom: 5px;
+        }
+
+        /* --- Existing: Verify Deed Widget Styling (Top Right) --- */
+        .verify-deed-widget {
+            grid-column: 4 / 5; /* Adjusted to fit the new 3-column layout */
+            cursor: default; 
+            padding-top: 5px; /* Adjust padding due to header height */
+        }
         .deed-form label {
             display: block;
-            margin: 15px 0 5px;
+            margin: 10px 0 5px;
             font-weight: bold;
         }
         .deed-form select, .deed-form button {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             border-radius: 6px;
             box-sizing: border-box;
             margin-bottom: 10px;
@@ -149,9 +224,9 @@
             background-color: var(--accent-green);
         }
         
-        /* 3. Rewards Widget Styling */
+        /* --- Existing: Rewards Widget Styling (Full width, below achievements) --- */
         .rewards-widget {
-            grid-column: 1 / 3; /* Spans both columns */
+            grid-column: 1 / 5; /* Full width under the top row */
         }
         .leaderboard-table {
             width: 100%;
@@ -177,13 +252,101 @@
             color: var(--mid-green);
         }
 
+        /* --- New: Estimated CO2 Reduction Widget Styling (Full width at bottom) --- */
+        .co2-reduction-widget {
+            grid-column: 1 / 5; /* Full width at the bottom */
+            text-align: center;
+        }
+        .chart-placeholder {
+            height: 200px;
+            background: repeating-linear-gradient(
+                -45deg,
+                var(--gray-light),
+                var(--gray-light) 10px,
+                var(--white) 10px,
+                var(--white) 20px
+            );
+            border-radius: 8px;
+            margin: 20px 0;
+            position: relative;
+            /* Simple visual representation of a rising graph and pie chart */
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 50px;
+        }
+        .line-graph {
+            width: 60%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="none" stroke="%234caf50" stroke-width="4" d="M0,80 C20,60 40,90 60,40 C80,10 100,20" /></svg>') no-repeat center;
+            background-size: 100% 100%;
+        }
+        .pie-chart {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(var(--mid-green) 0% 85%, var(--gray-light) 85% 100%);
+            position: relative;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .pie-chart-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        .metrics-bar {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 20px;
+            border-top: 1px solid var(--light-green);
+            margin-top: 20px;
+        }
+        .metric {
+            flex-basis: 30%;
+            text-align: center;
+        }
+        .metric-icon {
+            font-size: 2em;
+            color: var(--mid-green);
+            margin-bottom: 5px;
+        }
+        .metric-value {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--dark-green);
+        }
+
+
         /* Responsive adjustments */
-        @media (max-width: 768px) {
+        @media (max-width: 1000px) {
             .dashboard-container {
-                grid-template-columns: 1fr; /* Single column layout on mobile */
+                grid-template-columns: 1fr; /* Single column layout on tablets/mobile */
             }
-            .competition-widget, .verify-deed-widget, .rewards-widget {
+            .widget {
                 grid-column: 1 / 2;
+            }
+            .achievements-widget {
+                order: -1; /* Move achievements up on mobile */
+            }
+            .chart-placeholder {
+                height: auto;
+                flex-direction: column;
+            }
+            .line-graph {
+                width: 90%;
+                height: 150px;
+                margin-bottom: 20px;
             }
         }
     </style>
@@ -221,6 +384,39 @@
             </div>
         </div>
 
+        <div class="widget achievements-widget">
+            <h3>🌟 Achievements</h3>
+            <p>Completed the "Weekend Adventure" challenge. **+150 points**</p>
+            <hr style="border: 0; border-top: 1px dashed var(--light-green); margin: 10px 0;">
+
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <span class="achievement-icon">🚶</span>
+                    <strong>First Steps</strong>
+                    <p>Earned your first 100 points!</p>
+                    <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+100 points</p>
+                </div>
+                <div class="achievement-card">
+                    <span class="achievement-icon">⭐</span>
+                    <strong>Rising Star</strong>
+                    <p>Advanced to Silver League</p>
+                    <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+250 points</p>
+                </div>
+                <div class="achievement-card">
+                    <span class="achievement-icon">👥</span>
+                    <strong>Team Spirit</strong>
+                    <p>All family completed one challenge</p>
+                    <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+300 points</p>
+                </div>
+                <div class="achievement-card">
+                    <span class="achievement-icon">🏅</span>
+                    <strong>Carbon Captain</strong>
+                    <p>Reduced CO2 by 500kg</p>
+                    <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+500 points</p>
+                </div>
+            </div>
+        </div>
+
         <div class="widget verify-deed-widget" id="deed-widget">
             <h3>✅ Verify Your Deed</h3> 
             
@@ -229,7 +425,7 @@
                 
                 <label for="deed-type">Green Action Completed:</label>
                 <select id="deed-type" name="deed-type">
-                    <option value="" disabled selected>      Choose an Action     </option>
+                    <option value="" disabled selected>     Choose an Action     </option>
                     <option value="reused-water">💧 Reused water for plants/cleaning</option>
                     <option value="public-transport">🚌 Used public transport or carpooled</option>
                     <option value="reduced-electricity">💡 Reduced electricity consumption (off-peak)</option>
@@ -243,11 +439,47 @@
                 <input type="file" id="proof-upload" accept="image/*" style="width: 100%; margin-bottom: 20px;">
 
                 <button>Submit for Verification</button>
-                <p style="font-size: 0.8em; text-align: center; color: gray;">(AI Verification)</p>
+                <p style="font-size: 0.8em; text-align: center; color: gray;">AI PpweredVerification</p>
             </div>
         </div>
 
-        <div class="widget rewards-widget">
+        <div class="widget recent-activity-widget">
+            <h3>📅 Recent Activity</h3>
+            
+            <div class="activity-item">
+                <div class="activity-details">
+                    <p>Completed the "Weekend Adventure" challenge</p>
+                    <span>Nov 5</span>
+                </div>
+                <span class="activity-points">+150 points</span>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-details">
+                    <p>Earned bonus points for consistent participation</p>
+                    <span>Nov 12</span>
+                </div>
+                <span class="activity-points">+75 points</span>
+            </div>
+
+            <div class="activity-item">
+                <div class="activity-details">
+                    <p>Advanced from points for consistent participation</p>
+                    <span>Sep 21, 2023</span>
+                </div>
+                <span class="activity-points">+150 points</span>
+            </div>
+            
+            <div class="activity-item">
+                <div class="activity-details">
+                    <p>Completed 'No-Plastic Week' challenge</p>
+                    <span>Nov 15</span>
+                </div>
+                <span class="activity-points">+300 points</span>
+            </div>
+        </div>
+
+        <div class="widget rewards-widget" style="grid-column: 2 / 5;">
             <h3>🏆 Rewards & Recognition: Community Leaderboard</h3>
             <p>See how your family compares! Top families earn exclusive rewards from local eco-friendly businesses!</p>
 
@@ -285,18 +517,43 @@
                         <td>Bronze</td>
                         <td>1355</td>
                     </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>The Schneiders</td>
-                        <td>Bronze</td>
-                        <td>1395</td>
-                    </tr>
                 </tbody>
             </table>
             <p style="text-align: right; margin-top: 15px;"><a href="#" style="color: var(--dark-green);">View all Rewards & Partner Offers &rarr;</a></p>
         </div>
         
-    </div>
+        <div class="widget co2-reduction-widget">
+            <h3>💨 Estimated CO₂ Reduction</h3>
 
-    </body>
+            <div class="chart-placeholder">
+                <div class="line-graph"></div>
+                <div class="pie-chart">
+                    <div class="pie-chart-inner">
+                        Total Impact Score<br>
+                        <span style="font-size: 1.5em; color: var(--mid-green);">85%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-bar">
+                <div class="metric">
+                    <span class="metric-icon">💧</span>
+                    <p style="margin: 0;">Water Saved</p>
+                    <span class="metric-value">5,200 L</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-icon">⚡</span>
+                    <p style="margin: 0;">Energy Saved</p>
+                    <span class="metric-value">950 kWh</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-icon">🌳</span>
+                    <p style="margin: 0;">Trees Planted Equivalent</p>
+                    <span class="metric-value">25</span>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
 </html>
