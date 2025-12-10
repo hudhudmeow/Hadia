@@ -538,82 +538,120 @@
                         <p style="text-align: right; margin-top: 15px;"><a href="#" style="color: var(--dark-green);">View all Rewards & Partner Offers &rarr;</a></p>
         </div>
         
-        <div class="widget co2-reduction-widget">
-            <h3>🌍 Estimated CO₂ Reduction</h3>
+
+
+
+
+<div class="widget co2-reduction-widget">
+    <h3>🌍 Estimated CO₂ Reduction</h3>
+    
+    <div class="reduction-summary-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+
+        <div class="metric-card water-card" style="text-align: center;">
+            <div class="doughnut-chart" style="
+                /* Inline styles to simulate the graph appearance based on requirements */
+                --size: 150px;
+                --border-width: 15px;
+                width: var(--size);
+                height: var(--size);
+                margin: 0 auto 10px;
+                border-radius: 50%;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                /* 98.38% fill (Water Blue: #2196F3) */
+                background: conic-gradient(#2196F3 0% 98.38%, #e3f2fd 98.38% 100%); 
+            ">
+                <div style="
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 120px; /* (150 - 15*2) = 120 approx */
+                    height: 120px;
+                    background-color: #ffffff;
+                    border-radius: 50%;
+                "></div>
+                
+                <span class="value" style="position: relative; font-size: 1.8em; font-weight: bold; color: #004d40;">98.38%</span>
+                <span class="label" style="position: relative; font-size: 0.8em; color: #666; margin-top: 5px;">💧 Water Saved</span>
+            </div>
+            <p class="data-point" style="margin-top: 15px; font-size: 0.9em;"><strong>303,000L</strong> of Water Saved</p>
+        </div>
+
+        <div class="metric-card energy-card" style="text-align: center;">
+            <h4 class="graph-title" style="color: #004d40; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">⚡ Energy Saved (kWh)</h4>
             
-            <div class="reduction-summary-grid">
-
-                <div class="metric-card water-card">
-                    <div class="doughnut-chart">
-                        <span class="value">98.38%</span>
-                        <span class="label">💧 Water Saved</span>
-                    </div>
-                    <p class="data-point"><strong>303,000L</strong> of Water Saved</p>
+            <div class="bar-chart-container" style="
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                height: 150px;
+                padding: 0 5px;
+                border-bottom: 2px solid #004d40;
+                background-color: #ffffff;
+                border-radius: 5px;
+            ">
+                <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex-grow: 1; margin: 0 2px;">
+                    <div class="bar" style="width: 80%; background-color: #ff9800; height: 10%;"></div><span class="bar-label" style="font-size: 0.7em; color: #666; margin-top: 5px;">Jan</span>
                 </div>
-
-                <div class="metric-card energy-card">
-                    <h4 class="graph-title">⚡ Energy Saved (kWh)</h4>
-                    <div class="bar-chart-container">
-                        <div class="bar-group">
-                            <div class="bar" style="--height: 35%;"></div><span class="bar-label">Jan</span>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="--height: 45%;"></div><span class="bar-label">Feb</span>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="--height: 60%;"></div><span class="bar-label">Mar</span>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="--height: 50%;"></div><span class="bar-label">Apr</span>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="--height: 70%;"></div><span class="bar-label">May</span>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="--height: 85%;"></div><span class="bar-label">Jun</span>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="--height: 90%;"></div><span class="bar-label">Jul</span>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="--height: 100%;"></div><span class="bar-label">Aug</span>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="--height: 75%;"></div><span class="bar-label">Sep</span>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="--height: 55%;"></div><span class="bar-label">Oct</span>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="--height: 40%;"></div><span class="bar-label">Nov</span>
-                        </div>
-                        <div class="bar-group">
-                            <div class="bar" style="--height: 65%;"></div><span class="bar-label">Dec</span>
-                        </div>
-                    </div>
-                    <p class="data-point"><strong>18,904 kWh</strong> Saved out of 200,000 kWh Target</p>
+                <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex-grow: 1; margin: 0 2px;">
+                    <div class="bar" style="width: 80%; background-color: #ff9800; height: 15%;"></div><span class="bar-label" style="font-size: 0.7em; color: #666; margin-top: 5px;">Feb</span>
                 </div>
-
-                <div class="metric-card tree-card">
-                    <h4 class="graph-title">🌴 Trees Planted (Total 25)</h4>
-                    <div class="pictograph-container">
-                        <div class="tree-month">
-                            <span class="month-label">Jan-Mar:</span>
-                            <span class="tree-icons">🌳🌳🌳🌳🌳</span> </div>
-                        <div class="tree-month">
-                            <span class="month-label">Apr-Jun:</span>
-                            <span class="tree-icons">🌳🌳🌳🌳🌳🌳🌳</span> </div>
-                        <div class="tree-month">
-                            <span class="month-label">Jul-Sep:</span>
-                            <span class="tree-icons">🌳🌳🌳</span> </div>
-                        <div class="tree-month">
-                            <span class="month-label">Oct-Dec:</span>
-                            <span class="tree-icons">🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳</span> </div>
-                    </div>
-                    <p class="data-point"><strong>25 Trees</strong> Planted (Year-to-Date)</p>
+                <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex-grow: 1; margin: 0 2px;">
+                    <div class="bar" style="width: 80%; background-color: #ff9800; height: 20%;"></div><span class="bar-label" style="font-size: 0.7em; color: #666; margin-top: 5px;">Mar</span>
+                </div>
+                <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex-grow: 1; margin: 0 2px;">
+                    <div class="bar" style="width: 80%; background-color: #ff9800; height: 25%;"></div><span class="bar-label" style="font-size: 0.7em; color: #666; margin-top: 5px;">Apr</span>
+                </div>
+                <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex-grow: 1; margin: 0 2px;">
+                    <div class="bar" style="width: 80%; background-color: #ff9800; height: 28%;"></div><span class="bar-label" style="font-size: 0.7em; color: #666; margin-top: 5px;">May</span>
+                </div>
+                <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex-grow: 1; margin: 0 2px;">
+                    <div class="bar" style="width: 80%; background-color: #ff9800; height: 35%;"></div><span class="bar-label" style="font-size: 0.7em; color: #666; margin-top: 5px;">Jun</span>
+                </div>
+                <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex-grow: 1; margin: 0 2px;">
+                    <div class="bar" style="width: 80%; background-color: #ff9800; height: 40%;"></div><span class="bar-label" style="font-size: 0.7em; color: #666; margin-top: 5px;">Jul</span>
+                </div>
+                <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex-grow: 1; margin: 0 2px;">
+                    <div class="bar" style="width: 80%; background-color: #ff9800; height: 30%;"></div><span class="bar-label" style="font-size: 0.7em; color: #666; margin-top: 5px;">Aug</span>
+                </div>
+                <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex-grow: 1; margin: 0 2px;">
+                    <div class="bar" style="width: 80%; background-color: #ff9800; height: 45%;"></div><span class="bar-label" style="font-size: 0.7em; color: #666; margin-top: 5px;">Sep</span>
+                </div>
+                <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex-grow: 1; margin: 0 2px;">
+                    <div class="bar" style="width: 80%; background-color: #ff9800; height: 50%;"></div><span class="bar-label" style="font-size: 0.7em; color: #666; margin-top: 5px;">Oct</span>
+                </div>
+                <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex-grow: 1; margin: 0 2px;">
+                    <div class="bar" style="width: 80%; background-color: #ff9800; height: 60%;"></div><span class="bar-label" style="font-size: 0.7em; color: #666; margin-top: 5px;">Nov</span>
+                </div>
+                <div class="bar-group" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex-grow: 1; margin: 0 2px;">
+                    <div class="bar" style="width: 80%; background-color: #ff9800; height: 70%;"></div><span class="bar-label" style="font-size: 0.7em; color: #666; margin-top: 5px;">Dec</span>
                 </div>
             </div>
+            <p class="data-point" style="margin-top: 15px; font-size: 0.9em;"><strong>18,904 kWh</strong> Saved out of 200,000 kWh Target</p>
         </div>
-            </div>     
-</body>
-</html>
+
+        <div class="metric-card tree-card" style="text-align: center;">
+            <h4 class="graph-title" style="color: #004d40; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">🌴 Trees Planted (Total 25)</h4>
+            
+            <div class="pictograph-container" style="text-align: left; padding: 10px; background-color: #ffffff; border-radius: 5px;">
+                <div class="tree-month" style="display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px dotted #e8f5e9;">
+                    <span class="month-label" style="font-weight: bold; font-size: 0.9em; color: #004d40; flex-basis: 30%;">Jan-Mar:</span>
+                    <span class="tree-icons" style="flex-basis: 70%; font-size: 1.5em; white-space: normal; line-height: 1.2;">🌳🌳🌳🌳🌳</span> </div>
+                <div class="tree-month" style="display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px dotted #e8f5e9;">
+                    <span class="month-label" style="font-weight: bold; font-size: 0.9em; color: #004d40; flex-basis: 30%;">Apr-Jun:</span>
+                    <span class="tree-icons" style="flex-basis: 70%; font-size: 1.5em; white-space: normal; line-height: 1.2;">🌳🌳🌳🌳🌳🌳🌳</span> </div>
+                <div class="tree-month" style="display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px dotted #e8f5e9;">
+                    <span class="month-label" style="font-weight: bold; font-size: 0.9em; color: #004d40; flex-basis: 30%;">Jul-Sep:</span>
+                    <span class="tree-icons" style="flex-basis: 70%; font-size: 1.5em; white-space: normal; line-height: 1.2;">🌳🌳🌳</span> </div>
+                <div class="tree-month" style="display: flex; justify-content: space-between; align-items: center; padding: 5px 0;">
+                    <span class="month-label" style="font-weight: bold; font-size: 0.9em; color: #004d40; flex-basis: 30%;">Oct-Dec:</span>
+                    <span class="tree-icons" style="flex-basis: 70%; font-size: 1.5em; white-space: normal; line-height: 1.2;">🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳</span> </div>
+            </div>
+            <p class="data-point" style="margin-top: 15px; font-size: 0.9em;"><strong>25 Trees</strong> Planted (Year-to-Date)</p>
+        </div>
+    </div>
+</div>
