@@ -43,6 +43,11 @@
             font-size: 1.1em;
             line-height: 1.6;
         }
+        .welcome-message {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
         .home-button {
             display: inline-block;
             padding: 12px 25px;
@@ -67,11 +72,39 @@
 
     <div class="content">
         <h2>Success!</h2>
-        <h3>Your family has been successfully registered for the Eco-League community.</h3>
+        
+        <p class="welcome-message" id="welcomeText">
+            Your family has been successfully registered for the Eco-League community.
+        </p>
+
         <h3>You're now on the path to a greener, more sustainable lifestyle through friendly competition!</h3>
         
         <a href="dashboard.html" class="home-button">Begin Exploring :)</a>
     </div>
+
+    <script>
+        // Function to get a query parameter from the URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // 1. Get the Family Name from the URL. 
+        // NOTE: The name of the input field in the signup form was 'familyName'.
+        const familyName = getQueryParam('familyName');
+        
+        // 2. Locate the welcome text element
+        const welcomeElement = document.getElementById('welcomeText');
+
+        // 3. Update the text if the family name is found
+        if (familyName) {
+            // Use the Family Name and format it as requested
+            welcomeElement.innerHTML = `Welcome, The **${familyName}** Family! You have been successfully registered for the Eco-League community!`;
+        } else {
+            // Fallback message if for some reason the parameter is missing
+            welcomeElement.innerHTML = `Welcome! You have been successfully registered for the Eco-League community!`;
+        }
+    </script>
     
 </body>
 </html>
