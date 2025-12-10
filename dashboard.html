@@ -154,7 +154,6 @@
             grid-column: 2 / 3; /* Second column */
             order: 2;
         }
-        /* UPDATED: Change achievements-widget column span to 3 / 5 */
         .achievements-widget {
             grid-column: 3 / 5; /* Spans two columns on the right */
             order: 2;
@@ -180,48 +179,68 @@
             border-radius: 8px;
             border-left: 5px solid var(--mid-green);
         }
-        /* ... (rest of the activity styles) ... */
+        .activity-item:last-child {
+            margin-bottom: 0;
+        }
+        .activity-details {
+            text-align: left;
+            flex-grow: 1;
+        }
+        .activity-details p {
+            margin: 0;
+            font-size: 0.95em;
+            font-weight: bold;
+        }
+        .activity-details span {
+            font-size: 0.8em;
+            color: gray;
+            font-weight: normal;
+        }
+        .activity-points {
+            font-weight: bold;
+            color: var(--point-green);
+            white-space: nowrap;
+            margin-left: 10px;
+        }
 
-        /* --- Achievements Widget Styling (UPDATED TO MATCH CODE 2) --- */
+        /* --- Achievements Widget Styling (UPDATED from code 2) --- */
         .achievement-grid {
-            /* Min width changed from 180px to 200px to match code 2 */
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Minmax 200px from code 2 */
             gap: 15px;
             padding-top: 10px;
         }
-        /* ADDED: Achievement Card Styles from Code 2 */
         .achievement-card {
-            background-color: var(--gray-light);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid var(--light-green);
+            background-color: var(--gray-light); /* Added from code 2 */
+            padding: 15px; /* Added from code 2 */
+            border-radius: 10px; /* Added from code 2 */
+            text-align: center; /* Added from code 2 */
+            border: 1px solid var(--light-green); /* Added from code 2 */
         }
-        /* ADDED: Achievement Icon Styles from Code 2 */
         .achievement-icon {
-            font-size: 2.5em;
-            color: var(--mid-green);
-            margin-bottom: 10px;
-            display: block;
+            font-size: 2.5em; /* Added from code 2 */
+            color: var(--mid-green); /* Added from code 2 */
+            margin-bottom: 10px; /* Added from code 2 */
+            display: block; /* Added from code 2 */
         }
-        /* ADDED: Achievement Card Text Styles from Code 2 */
         .achievement-card p {
-            margin: 5px 0 0;
-            font-size: 0.85em;
-            color: #666;
+            margin: 5px 0 0; /* Updated from code 2 */
+            font-size: 0.85em; /* Updated from code 2 */
+            color: #666; /* Added from code 2 */
+        }
+        .achievement-card p:last-of-type { /* Targetting the points p tag */
+            /* Keep the existing specific inline style for points, but ensure it overrides */
         }
         .achievement-card strong {
-            display: block;
-            font-size: 1em;
-            color: var(--dark-green);
-            margin-bottom: 5px;
+            display: block; /* Added from code 2 */
+            font-size: 1em; /* Added from code 2 */
+            color: var(--dark-green); /* Added from code 2 */
+            margin-bottom: 5px; /* Added from code 2 */
         }
+        /* --- End Achievements Widget Styling Update --- */
 
 
         /* --- Verify Deed Widget Styling --- */
-        /* ... (styles remain the same) ... */
-        /* Added from Code 2 to ensure style completeness for the original widget: */
         .deed-form label {
             display: block;
             margin: 10px 0 5px;
@@ -250,11 +269,103 @@
             background-color: var(--accent-green);
         }
 
+
         /* --- Rewards Widget Styling --- */
-        /* ... (styles remain the same) ... */
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            text-align: left;
+        }
+        .leaderboard-table th, .leaderboard-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--light-green);
+        }
+        .leaderboard-table th {
+            background-color: var(--dark-green);
+            color: var(--white);
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        .leaderboard-table tr:nth-child(even) {
+            background-color: var(--gray-light);
+        }
+        .leaderboard-table td:last-child {
+            font-weight: bold;
+            color: var(--mid-green);
+        }
 
         /* --- CO2 Reduction Widget Styling --- */
-        /* ... (styles remain the same) ... */
+        .chart-placeholder {
+            height: 200px;
+            background: repeating-linear-gradient(
+                -45deg,
+                var(--gray-light),
+                var(--gray-light) 10px,
+                var(--white) 10px,
+                var(--white) 20px
+            );
+            border-radius: 8px;
+            margin: 20px 0;
+            position: relative;
+            /* Simple visual representation of a rising graph and pie chart */
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 50px;
+        }
+        .line-graph {
+            width: 60%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="none" stroke="%234caf50" stroke-width="4" d="M0,80 C20,60 40,90 60,40 C80,10 100,20" /></svg>') no-repeat center;
+            background-size: 100% 100%;
+        }
+        .pie-chart {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(var(--mid-green) 0% 85%, var(--gray-light) 85% 100%);
+            position: relative;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .pie-chart-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        .metrics-bar {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 20px;
+            border-top: 1px solid var(--light-green);
+            margin-top: 20px;
+        }
+        .metric {
+            flex-basis: 30%;
+            text-align: center;
+        }
+        .metric-icon {
+            font-size: 2em;
+            color: var(--mid-green);
+            margin-bottom: 5px;
+        }
+        .metric-value {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--dark-green);
+        }
+
 
         /* Responsive adjustments */
         @media (max-width: 1000px) {
@@ -268,7 +379,6 @@
             .competition-widget { order: 1; }
             .verify-deed-widget { order: 2; }
             .recent-activity-widget { order: 3; }
-            /* UPDATED: Change mobile order to match Code 2's implied change (to the top) */
             .achievements-widget { order: 4; }
             .rewards-widget { order: 5; }
             .co2-reduction-widget { order: 6; }
@@ -346,7 +456,7 @@
             </div>
         </div>
         <div class="widget verify-deed-widget" id="deed-widget">
-            <h3>✅ Verify Your Deed</h3> 
+            <h3>✅ Verify Your Deed 
             
             <div class="deed-form" id="deed-form">
                 <p>Select your completed action and upload proof.</p>
@@ -469,4 +579,11 @@
                 </div>
                 <div class="metric">
                     <span class="metric-icon">🌳</span>
-                    <p style="margin
+                    <p style="margin: 0;">Trees Planted Equivalent</p>
+                    <span class="metric-value">25</span>
+                </div>
+            </div>
+        </div>
+        </div>
+</body>
+</html>
