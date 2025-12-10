@@ -12,6 +12,8 @@
             --light-green: #e8f5e9;
             --accent-green: #81c784;
             --white: #ffffff;
+            --greyish-green: #6c7d7c; /* New color for password hint */
+            --light-grey: #6c757d; /* New color for checkbox text */
         }
         body {
             font-family: Arial, sans-serif;
@@ -43,15 +45,36 @@
             margin-bottom: 8px;
             font-weight: bold;
         }
+        /* Custom styling for the password hint text */
+        .password-hint {
+            font-style: italic;
+            font-weight: normal; /* Un-bolded */
+            color: var(--greyish-green); /* Greyish-green color */
+            display: inline; /* Keep it next to the label */
+        }
         .form-group input[type="text"],
         .form-group input[type="email"],
         .form-group input[type="number"],
-        .form-group input[type="tel"] {
+        .form-group input[type="tel"],
+        .form-group input[type="password"] { /* Added password input here */
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            box-sizing: border-box; /* Important for padding/width */
+            box-sizing: border-box;
+        }
+        /* New Checkbox container styling */
+        .checkbox-group {
+            margin-top: 15px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        /* New Checkbox label styling */
+        .checkbox-group label.checkbox-label {
+            display: block;
+            font-weight: normal;
+            margin-bottom: 10px;
+            color: var(--light-grey); /* Grey color */
         }
         .register-button {
             display: block;
@@ -59,7 +82,7 @@
             padding: 15px;
             margin-top: 20px;
             background-color: var(--mid-green);
-            color: white;
+            color: var(--white);
             border: none;
             border-radius: 8px;
             font-size: 1.1em;
@@ -83,6 +106,7 @@
         <p>Please enter your family details to create your account and start competing.</p>
 
         <form action="success_upon_signingin.html" method="GET">
+            
             <div class="form-group">
                 <label for="familyName">Family Name:</label>
                 <input type="text" id="familyName" name="familyName" placeholder="e.g., The AlHashimi Family" required>
@@ -90,7 +114,7 @@
 
             <div class="form-group">
                 <label for="members">How many members are in your family?</label>
-                <input type="number" id="members" name="members" min="2"  required>
+                <input type="number" id="members" name="members" min="2" required>
             </div>
 
             <div class="form-group">
@@ -104,15 +128,32 @@
             </div>
 
             <div class="form-group">
-                <label for="members">Password (Must contain uppercase, lowecase, special characters and digits):</label>
-                <input type="password" id="password" name="password" placeholder="min 8 characters"  required>
+                <label for="password">
+                    Password - 
+                    <span class="password-hint">must contain uppercase, lowecase, special characters and digits</span>:
+                </label>
+                <input type="password" id="password" name="password" placeholder="min 8 characters" required>
             </div>
 
             <div class="form-group">
-                <label for="members">Confirm password:</label>
-                <input type="password" id="confirm password" name="password" placeholder="Re-enter password"  required>
+                <label for="confirm-password">Confirm password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-enter password" required>
             </div>
 
+            <div class="checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" name="newsletter" value="yes">
+                    I would like to get weekly newsletters.
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="events" value="yes">
+                    I would like to receive exclusive event invitations.
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" name="agree-terms" value="yes" required>
+                    By signing up, you agree to our <a href="#" style="color: var(--light-grey);">terms and conditions</a>, <a href="#" style="color: var(--light-grey);">privacy policy</a> and <a href="#" style="color: var(--light-grey);">cookies policy</a>.
+                </label>
+            </div>
             <button type="submit" class="register-button">Register Family</button>
         </form>
     </div>
