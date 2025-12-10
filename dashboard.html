@@ -115,22 +115,12 @@
             color: var(--mid-green);
         }
 
-        /* 2. Verify Deed Widget Styling (Interactive Prototype) */
+        /* 2. Verify Deed Widget Styling (NOW ALWAYS VISIBLE) */
         .verify-deed-widget {
             grid-column: 2 / 3; /* Takes the right column */
-            cursor: pointer; /* Indicates it's clickable */
-            /* Height will adjust based on content visibility */
+            cursor: default; /* No longer clickable to expand/collapse */
         }
-        .deed-form {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out;
-            padding-top: 0;
-        }
-        .verify-deed-widget.expanded .deed-form {
-            max-height: 500px; /* Large enough value to show content */
-            padding-top: 15px;
-        }
+        /* Removed .deed-form max-height/overflow CSS that controlled collapse */
         .deed-form label {
             display: block;
             margin: 15px 0 5px;
@@ -232,7 +222,7 @@
         </div>
 
         <div class="widget verify-deed-widget" id="deed-widget">
-            <h3 onclick="toggleDeedForm()">✅ Verify Your Deed <span id="arrow" style="float: right;">▼</span></h3>
+            <h3>✅ Verify Your Deed</h3> 
             
             <div class="deed-form" id="deed-form">
                 <p>Select your completed action and upload proof (via AI-Assisted Photo Verification).</p>
@@ -308,21 +298,5 @@
         
     </div>
 
-    <script>
-        // Simple JavaScript to handle the "Verify Your Deed" window expansion
-        function toggleDeedForm() {
-            const widget = document.getElementById('deed-widget');
-            const form = document.getElementById('deed-form');
-            const arrow = document.getElementById('arrow');
-
-            if (widget.classList.contains('expanded')) {
-                widget.classList.remove('expanded');
-                arrow.textContent = '▼'; // Collapse icon
-            } else {
-                widget.classList.add('expanded');
-                arrow.textContent = '▲'; // Expand icon
-            }
-        }
-    </script>
-</body>
+    </body>
 </html>
