@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Registration</title>
+    <style>
+        /* Reusing your color variables for consistency */
+        :root {
+            --dark-green: #004d40;
+            --mid-green: #4caf50;
+            --light-green: #e8f5e9;
+            --accent-green: #81c784;
+            --white: #ffffff;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-green);
+            color: var(--dark-green);
+            text-align: center;
+        }
+        .header {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 20px 0;
+        }
+        .content {
+            padding: 40px 20px;
+            max-width: 500px;
+            margin: 30px auto;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="number"],
+        .form-group input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Important for padding/width */
+        }
+        .register-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: var(--mid-green);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .register-button:hover {
+            background-color: var(--accent-green);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Family Account Registration</h1>
+    </div>
+
+    <div class="content">
+        <h2>Join the Eco-League!</h2>
+        <p>Please enter your family details to create your account and start competing.</p>
+
+        <form action="success.html" method="GET">
+            <div class="form-group">
+                <label for="familyName">Family Name (e.g., The Smiths):</label>
+                <input type="text" id="familyName" name="familyName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="members">How many members are in your family?</label>
+                <input type="number" id="members" name="members" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="e.g., 555-123-4567" required>
+            </div>
+
+            <button type="submit" class="register-button">Register Family</button>
+        </form>
+    </div>
+    
+</body>
+</html>
