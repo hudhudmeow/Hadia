@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadia: The Green Family Challenge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /*
+        * CSS Styles for Hadia Landing Page
+        */
+
+        :root {
+            --primary-green: #61E247;
+            --accent-gold: #FFC72C;
+            --text-dark: #2c3e50;
+            --text-light: #f4f6f9;
+            --background-white: #ffffff;
+            --background-light-gray: #f9f9f9;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        /* Base Styles and Typography */
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            color: var(--text-dark);
+            margin-top: 0;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+
+        /* Header / Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: var(--background-light-gray);
+            border-bottom: 5px solid var(--primary-green);
+        }
+
+        .hero p.motto {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-dark);
+            margin-top: 15px;
+        }
+
+        /* Button Styling (CTA) */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--primary-green);
+            color: var(--background-white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            margin-top: 30px;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(97, 226, 71, 0.5);
+            border: none;
+        }
+
+        .cta-button:hover {
+            background-color: #51c43b; /* Slightly darker green */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(97, 226, 71, 0.7);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-intro {
+            background-color: var(--background-white);
+        }
+        
+        /* Introduction Block Layout */
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 20px 0;
+        }
+
+        .intro-text {
+            flex: 1;
+        }
+
+        .intro-image-container {
+            flex: 1;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .intro-image-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #e0f7fa; /* Light cyan for branding */
+            border: 3px dashed var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            border-radius: 15px;
+        }
+
+        /* Features Section */
+        .section-features {
+            background-color: var(--background-light-gray);
+            border-top: 1px solid #ddd;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .feature-block {
+            background-color: var(--background-white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-block img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 3px solid var(--accent-gold); /* Use accent for visual interest */
+        }
+
+        .feature-block p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--text-dark); /* Dark background for contrast */
+            color: var(--text-light);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .footer-nav a {
+            color: var(--primary-green);
+            text-decoration: none;
+            padding: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Separator for links */
+        .footer-nav a:not(:last-child)::after {
+            content: "|";
+            color: var(--text-light);
+            margin-left: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .intro-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .intro-image-container {
+                order: -1; /* Move image above text on mobile */
+                margin-bottom: 30px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p.motto {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+            
+            .intro-image-placeholder {
+                height: 200px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1>
+                🌿 Hadia: The Green Family Challenge 🏆
+            </h1>
+            <p class="motto">Sustainability. Simplified. Rewarded.</p>
+
+            <a href="signup.html" class="cta-button">
+                Start the Green Challenge Today!
+            </a>
+        </div>
+    </header>
+
+    <section class="section-intro">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h2>A Healthy Competition for Green Living.</h2>
+                    <p>The high-impact mobile app prototype that turns reducing your family's carbon footprint into a fun, competitive, and rewarding game. Advance through leagues and earn real-world rewards.</p>
+                </div>
+                <div class="intro-image-container">
+                    <div class="intro-image-placeholder">
+                        [App Mockup / Branding Image Placeholder]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-features">
+        <div class="container">
+            <h2>The Power Behind the Progress</h2>
+            
+            <div class="features-grid">
+                
+                <div class="feature-block">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/034/104/023/small/approved-icon-green-approved-star-sticker-profile-verification-accept-badge-green-tick-symbol-icon-sign-in-green-color-done-confirmed-account-icon-green-check-mark-vector.jpg" alt="Verification Icon">
+                    
+                    <h3>Verified Actions, Earned Points</h3>
+                    <p>Earn points for tangible green actions: water reuse, public transport, planting, and waste reduction. Our **AI-Assisted Photo Recognition** verifies completion (e.g., checking for specific objects), ensuring fair competition and reliable impact measurement. Individual scores combine for collective family progress.</p>
+                </div>
+                
+                <div class="feature-block">
+                    <img src="https://c8.alamy.com/comp/HKWXP2/green-economy-concept-graph-of-growing-sustainable-environment-with-HKWXP2.jpg" alt="Impact Graph">
+                    
+                    <h3>Track Your True Impact</h3>
+                    <p>See real-time progress with interactive tracking graphs. Eliminate guesswork and view actual savings in kWh, liters of water, kg of waste, and **Estimated CO2 Reduction**. This clear impact data reinforces positive habits and provides governments with essential metrics for climate reporting.</p>
+                </div>
+                
+                <div class="feature-block">
+                    <img src="https://thumbs.dreamstime.com/b/sustainability-goals-concept-icons-renewable-energy-environmental-protection-focus-greener-future-illustration-412604550.jpg" alt="Goal Icon">
+                    
+                    <h3>Personalized Goals & Knowledge</h3>
+                    <p>Set custom weekly/monthly Green Goals (e.g., '10% electricity reduction') with AI guidance for realistic targets based on history. Access curated **Educational Content** (guides, videos) on sustainable shopping, composting, and more, empowering your family with knowledge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Accelerating Progress Towards Critical Sustainability Goals</p>
+
+            <div class="footer-nav">
+                <a href="leagues-leaderboards.html">Leagues & Leaderboards</a>
+                <a href="reward-system.html">Reward System</a>
+                <a href="ai-verification.html">AI Verification</a>
+                <a href="carbon-tracking.html">Carbon Tracking</a>
+                <a href="profiteers.html">Profiteers</a>
+                <a href="about-hadia.html">About Hadia</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
