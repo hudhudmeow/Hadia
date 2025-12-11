@@ -7,379 +7,307 @@
     <style>
         /* Color Variables */
         :root {
-            --dark-green: #004d40;
-            --mid-green: #4caf50;
-            --light-green: #e8f5e9;
-            --accent-green: #ecfbe1;
+            --dark-green: #004d40; /* Primary Dark */
+            --mid-green: #4caf50; /* Primary Medium */
+            --light-green: #e8f5e9; /* Background Light */
+            --accent-green: #ecfbe1; /* Highlight Banner */
             --white: #ffffff;
             --gray-light: #f5f5f5;
-            --activity-green: #eaf8ed; /* Light background for activity items */
-            --point-green: #1a7e4b; /* Darker green for points text */
+            --activity-green: #eaf8ed;
+            --point-green: #1a7e4b;
+            --box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Stronger shadow */
+            --border-radius: 12px;
         }
 
         /* Base Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern, clear font */
             margin: 0;
             padding: 0;
             background-color: var(--light-green);
             color: var(--dark-green);
+            line-height: 1.6; /* Increased line height for better readability */
         }
         .header {
             background-color: var(--dark-green);
             color: var(--white);
-            padding: 15px 20px;
+            padding: 20px 40px; /* Increased padding */
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .header h1 {
             margin: 0;
-            font-size: 1.8em;
+            font-size: 2em; /* Slightly larger title */
+            font-weight: 600;
         }
-
-        /* Dashboard Grid Layout (Updated to 3 columns) */
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        /* Dashboard Grid Layout (Updated for Spacing and Professionalism) */
         .dashboard-container {
             display: grid;
-            grid-template-columns: 1.5fr 3fr 1.5fr; /* Narrow Left, Wide Center, Medium Right */
-            gap: 20px;
-            padding: 20px;
-            max-width: 1400px;
+            grid-template-columns: 1fr 3fr 1.5fr; /* Narrow Left, Wide Center, Medium Right */
+            gap: 30px; /* Increased gap/spacing */
+            padding: 30px; /* Increased padding */
+            max-width: 1600px; /* Wider max width */
             margin: 0 auto;
         }
         .widget {
             background-color: var(--white);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            padding: 30px; /* Increased padding */
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
         }
         .widget:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px); /* More noticeable lift on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         .widget h3 {
-            color: var(--mid-green);
+            color: var(--dark-green);
             margin-top: 0;
             border-bottom: 2px solid var(--light-green);
-            padding-bottom: 10px;
+            padding-bottom: 12px;
+            font-size: 1.5em;
+            font-weight: 600;
         }
 
-        /* --- 1. Family Competition Widget Styling (HIGHLIGHTED FULL WIDTH) --- */
+        /* --- 1. Competition Widget (Banner) --- */
         .competition-widget {
-            grid-column: 1 / 4; /* Spanning all three columns to be a banner */
-            background-color: var(--accent-green); /* Highlight background */
-            padding: 30px;
+            grid-column: 1 / 4;
+            background-color: var(--accent-green);
+            padding: 40px; /* Larger banner padding */
             font-size: 1.1em;
+            border-left: 8px solid var(--mid-green);
         }
         .competition-widget h3 {
-            font-size: 1.8em;
+            font-size: 2em;
             color: var(--dark-green);
             border: none;
             padding-bottom: 0;
         }
         .league-progress {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin: 30px 0; /* Increased margin for visibility */
+            margin: 30px 0;
         }
         .trophy {
-            font-size: 3em;
+            font-size: 3.5em; /* Larger icons */
         }
         .progress-line {
             flex-grow: 1;
-            height: 16px; /* Thicker progress bar */
-            /* Adjusted percentage: 3600/10000 = 36% */
+            height: 20px; /* Thicker bar */
             background: linear-gradient(to right, #D4AF37 0%, #D4AF37 36%, var(--gray-light) 36%, var(--gray-light) 100%);
-            border-radius: 8px;
-            margin: 0 20px;
+            border-radius: 10px;
+            margin: 0 25px;
             position: relative;
-            transition: background 1s ease-in-out; /* Added transition for smooth update */
         }
         .progress-line::after {
-            content: '3600/10000 Pts'; /* Initial value */
-            position: absolute;
-            top: -30px; /* Moved up */
-            left: 36%; /* Adjusted to match progress fill */
+            content: '3,600 / 10,000 Pts'; /* Added comma for professionalism */
+            top: -35px;
+            left: 36%;
             transform: translateX(-50%);
-            font-size: 1em;
+            font-size: 1.1em;
             font-weight: bold;
             color: var(--dark-green);
-            white-space: nowrap; /* Prevent wrapping */
-            transition: left 1s ease-in-out; /* Added transition for smooth update */
+            white-space: nowrap;
+        }
+        .individual-scores {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--light-green);
         }
         .individual-scores h4 {
+            font-size: 1.2em;
             color: var(--dark-green);
-            margin-top: 25px;
-            border-top: 1px dashed var(--light-green);
-            padding-top: 10px;
-        }
-        .score-list {
-            list-style: none;
-            padding: 0;
-            text-align: left;
         }
         .score-list li {
-            padding: 8px 0;
-            border-bottom: 1px dotted var(--light-green);
-            display: flex;
-            justify-content: space-between;
+            padding: 10px 0; /* More vertical space */
+            border-bottom: 1px solid var(--gray-light);
+            font-size: 1.05em;
         }
         .score-list li strong {
-            color: var(--mid-green);
+            color: var(--point-green);
+            font-size: 1.1em;
         }
 
-        /* --- Recent Activity Widget Styling (Left Column, below Competition) --- */
+        /* --- 2. Recent Activity Widget --- */
         .recent-activity-widget {
-            grid-column: 1 / 2; /* Now in the first column below competition */
-            padding: 15px;
+            grid-column: 1 / 2;
+            padding: 20px; /* Adjust slightly for cleaner list */
         }
         .activity-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--activity-green);
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            border-left: 5px solid var(--mid-green);
-        }
-        .activity-item:last-child {
-            margin-bottom: 0;
-        }
-        .activity-details {
-            text-align: left;
-            flex-grow: 1;
+            padding: 15px; /* More padding */
+            margin-bottom: 15px; /* More vertical space */
+            border-left: 6px solid var(--mid-green);
         }
         .activity-details p {
-            margin: 0;
-            font-size: 0.95em;
-            font-weight: bold;
+            font-size: 1em;
+            font-weight: 600;
         }
         .activity-details span {
-            font-size: 0.8em;
-            color: gray;
-            font-weight: normal;
+            font-size: 0.85em;
+            color: #888;
         }
         .activity-points {
-            font-weight: bold;
+            font-size: 1.2em;
             color: var(--point-green);
-            white-space: nowrap;
-            margin-left: 10px;
         }
 
-        /* --- New: Achievements Widget Styling (Center Column, below Competition) --- */
+        /* --- 3. Achievements Widget (Center) --- */
         .achievements-widget {
-            grid-column: 2 / 3; /* Changed to only span the center column */
+            grid-column: 2 / 3;
         }
         .achievement-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjusted min-width for the narrower column */
-            gap: 15px;
-            padding-top: 10px;
+            gap: 20px; /* Increased gap */
         }
         .achievement-card {
+            padding: 20px; /* More padding */
             background-color: var(--gray-light);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
             border: 1px solid var(--light-green);
-        }
-        .achievement-icon {
-            font-size: 2.5em;
-            color: var(--mid-green);
-            margin-bottom: 10px;
-            display: block;
-        }
-        .achievement-card p {
-            margin: 5px 0 0;
-            font-size: 0.85em;
-            color: #666;
-        }
-        .achievement-card strong {
-            display: block;
-            font-size: 1em;
-            color: var(--dark-green);
-            margin-bottom: 5px;
-        }
-
-        /* --- Existing: Verify Deed Widget Styling (Right Column, below Competition) --- */
-        .verify-deed-widget {
-            grid-column: 3 / 4; /* Now in the third (right) column below competition */
-            cursor: default; 
-            padding-top: 5px; /* Adjust padding due to header height */
-        }
-        .deed-form label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: bold;
-        }
-        .deed-form select, .deed-form button {
-            width: 100%;
-            padding: 10px;
-            border-radius: 6px;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-        }
-        .deed-form select {
-            border: 1px solid #ccc;
-            background-color: var(--gray-light);
-        }
-        .deed-form button {
-            background-color: var(--mid-green);
-            color: var(--white);
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
             transition: background-color 0.3s;
         }
-        .deed-form button:hover {
-            background-color: var(--dark-green); /* Changed hover color to dark-green for better contrast */
+        .achievement-card:hover {
+            background-color: var(--activity-green);
         }
-        
-        /* --- Existing: Rewards Widget Styling (Full width, below achievements) --- */
-        .rewards-widget {
-            grid-column: 1 / 4; /* Full width under the second row */
+        .achievement-icon {
+            font-size: 3em;
         }
-        .leaderboard-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            text-align: left;
+        .achievement-card strong {
+            font-size: 1.1em;
+            margin-bottom: 8px;
         }
-        .leaderboard-table th, .leaderboard-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--light-green);
-        }
-        .leaderboard-table th {
-            background-color: var(--dark-green);
-            color: var(--white);
-            text-transform: uppercase;
+        .achievement-card p {
+            margin: 3px 0;
             font-size: 0.9em;
-        }
-        .leaderboard-table tr:nth-child(even) {
-            background-color: var(--gray-light);
-        }
-        .leaderboard-table td:last-child {
-            font-weight: bold;
-            color: var(--mid-green);
+            color: #666;
         }
 
-        /* --- New: Estimated CO2 Reduction Widget Styling (Full width at bottom) --- */
-        .co2-reduction-widget {
-            grid-column: 1 / 4; /* Full width at the bottom */
-            text-align: center;
+        /* --- 4. Verify Deed Widget (Right) --- */
+        .verify-deed-widget {
+            grid-column: 3 / 4;
+            padding-top: 20px; /* Aligns content better */
         }
-        /* ... (rest of the CO2-reduction-widget styles - kept the same) ... */
+        .deed-form p {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #555;
+        }
+        .deed-form label {
+            margin: 15px 0 8px; /* More space around labels */
+            font-size: 1em;
+        }
+        .deed-form select, .deed-form button {
+            padding: 12px; /* Taller form elements */
+            border-radius: 8px;
+        }
+        .deed-form select {
+            border: 1px solid #ddd;
+            background-color: var(--white);
+            appearance: none; /* Hide default dropdown arrow */
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23004d40%22%20d%3D%22M287%20170L146%20292%205%20170h282z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px top 50%;
+            background-size: 0.65em auto;
+        }
+        .deed-form input[type="file"] {
+            border: 1px solid #ddd;
+            background-color: var(--white);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .deed-form button {
+            margin-top: 15px;
+            background-color: var(--mid-green);
+            font-size: 1.1em;
+        }
+        
+        /* --- 5. Rewards Widget (Full Width) --- */
+        .rewards-widget {
+            grid-column: 1 / 4;
+            padding-bottom: 10px; /* Reduced bottom padding to hug the table */
+        }
+        .leaderboard-table {
+            margin-top: 20px;
+        }
+        .leaderboard-table th {
+            padding: 15px; /* More padding */
+            font-size: 1em;
+        }
+        .leaderboard-table td {
+            padding: 15px;
+        }
+        .leaderboard-table tr:hover {
+            background-color: var(--activity-green); /* Highlight row on hover */
+        }
+        .leaderboard-table td:last-child {
+            font-size: 1.1em;
+        }
+
+        /* --- 6. CO2 Reduction Widget (Full Width at Bottom) --- */
+        .co2-reduction-widget {
+            grid-column: 1 / 4;
+            padding-bottom: 40px;
+        }
+        .co2-reduction-widget h3 {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .reduction-summary-grid {
+            margin-top: 20px;
+        }
+        .metric-card {
+            padding: 20px;
+            border: 1px solid var(--light-green);
+            border-radius: 10px;
+            background-color: var(--gray-light);
+        }
+        .data-point {
+            font-size: 1em !important;
+            color: var(--dark-green);
+        }
 
         /* Responsive adjustments */
         @media (max-width: 1000px) {
             .dashboard-container {
-                grid-template-columns: 1fr; /* Single column layout on tablets/mobile */
+                grid-template-columns: 1fr;
+                padding: 20px;
             }
             .widget {
                 grid-column: 1 / 2;
+                padding: 20px;
+            }
+            .competition-widget {
+                order: -3;
             }
             .achievements-widget {
-                order: -1; /* Move achievements up on mobile */
+                order: -2;
+            }
+            .recent-activity-widget {
+                order: -1;
+            }
+            .reduction-summary-grid {
+                grid-template-columns: 1fr !important;
             }
         }
-
-        /* ****************************************************** */
-        /* ************* POP-UP / MODAL STYLES (NEW) ************ */
-        /* ****************************************************** */
-
-        /* The Modal (Pop-up Background) */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 10; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-        }
-
-        /* Modal Content/Box */
+        
+        /* Modal Styles (Improved) */
         .modal-content {
-            background-color: var(--white);
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            width: 80%; /* Could be more or less, depending on screen size */
-            max-width: 400px;
-            text-align: center;
-            position: relative;
+            margin: 10% auto; /* Move higher up */
+            padding: 40px;
+            max-width: 350px;
         }
-
-        /* The Close Button */
-        .close {
-            color: #aaa;
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 28px;
-            font-weight: bold;
-            transition: color 0.2s;
-        }
-        .close:hover,
-        .close:focus {
-            color: var(--dark-green);
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* Leaf SVG and Animation Styles */
         .leaf-svg {
-            width: 100px;
-            height: 100px;
-            margin: 20px 0;
+            width: 120px;
+            height: 120px;
         }
-
-        /* The path to be animated (Leaf path is an example, adjust stroke-dasharray based on actual path length) */
-        #leaf-path {
-            stroke-dasharray: 450; /* Needs to be slightly larger than the path length */
-            stroke-dashoffset: 450;
-            animation: paint-leaf 3s linear forwards; /* 3 seconds to complete */
-            stroke: var(--mid-green); /* Starting color before fill */
-            stroke-width: 5;
-            fill: none; /* No fill during painting */
-        }
-
-        /* Animation Keyframes */
-        @keyframes paint-leaf {
-            to {
-                stroke-dashoffset: 0;
-            }
-        }
-
-        /* Final State Styles */
-        .success-tick {
-            font-size: 60px;
-            color: var(--point-green);
-            display: none;
-            margin: 20px 0;
-            animation: pop-in 0.5s ease-out;
-        }
-
-        @keyframes pop-in {
-            0% { transform: scale(0.5); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .points-allotted {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: var(--dark-green);
-            margin-top: 10px;
-        }
-
-        /* Loader Icon when showing success, hide the leaf and text */
         .modal-content.success #verification-message,
-        .modal-content.success .leaf-svg {
+        .modal-content.success .leaf-svg,
+        .modal-content.success #initial-message {
             display: none;
         }
 
@@ -387,155 +315,152 @@
         .modal-content.success .points-allotted {
             display: block;
         }
-        /* ****************************************************** */
-        /* ********** END POP-UP / MODAL STYLES (NEW) *********** */
-        /* ****************************************************** */
-
-
-        /* ... (rest of the original styles - kept the same) ... */
+        
+        #initial-message {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h1>🌳 Eco-League Dashboard</h1>
-        <p>Welcome, The AlHashimi Family!</p>
+        <p>Welcome, **The AlHashimi Family**</p>
     </div>
 
     <div class="dashboard-container">
 
         <div class="widget competition-widget">
-            <h3>🥈 Family Competition: League Progress</h3>
+            <h3>League Standing: Gold Tier</h3>
+            <p>You are currently in the **Gold Tier**. Achieve **10,000 points** to reach the **Diamond League**!</p>
             
-            <p>Current League: <span id="current-league">Gold</span></p>
-
             <div class="league-progress">
                 <span class="trophy">🏆</span>
                 <div class="progress-line" id="progress-line"></div>
                 <span class="trophy">💎</span>
             </div>
-            <p style="font-size: 1em;"> 3600 out of 10000 points on the way to the Diamond League!</p>
-            <h3 id="league-progress-text"> 3600 out of 10000 points on the way to the Diamond League!</h3>
-
+            
             <div class="individual-scores">
-                <h4>Individual Family Scores</h4>
+                <h4>Individual Leaderboard</h4>
                 <ul class="score-list">
-                    <li>Father Saud <span id="score-father"><strong>950 pts</strong></span></li>
-                    <li>Mother Khulood <span id="score-mother"><strong>900 pts</strong></span></li>
-                    <li>Daughter Khultoom <span id="score-daughter"><strong>850 pts</strong></span></li>
-                    <li>Son Abdalla <span id="score-son"><strong>900 pts</strong></span></li>
-                    <li style="font-weight: bold; border-top: 2px solid var(--mid-green); margin-top: 10px; padding-top: 10px;">Family Total <span id="family-total-score"><strong>3600 pts</strong></span></li>
+                    <li>Father Saud **950 pts**</li>
+                    <li>Mother Khulood **900 pts**</li>
+                    <li>Daughter Khultoom **850 pts**</li>
+                    <li>Son Abdalla **900 pts**</li>
+                    <li style="font-weight: bold; border-top: 2px solid var(--mid-green); margin-top: 10px; padding-top: 10px;">Family Total **3,600 pts**</li>
                 </ul>
             </div>
         </div>
 
         <div class="widget recent-activity-widget">
-            <h3>📅 Recent Activity</h3>
+            <h3>📅 Latest Activity</h3>
             
             <div class="activity-item">
                 <div class="activity-details">
-                    <p>Completed the "Reduction Adventure" challenge</p>
+                    <p>Reduction Adventure challenge completed</p>
                     <span>Dec 5</span>
                 </div>
-                <span class="activity-points">+150 points</span>
+                <span class="activity-points">+150 pts</span>
             </div>
 
             <div class="activity-item">
                 <div class="activity-details">
-                    <p>Earned bonus points for consistent participation</p>
+                    <p>Bonus for consistent participation</p>
                     <span>Nov 30</span>
                 </div>
-                <span class="activity-points">+75 points</span>
+                <span class="activity-points">+75 pts</span>
             </div>
 
             <div class="activity-item">
                 <div class="activity-details">
-                    <p>Advanced from points for consistent participation</p>
+                    <p>Advanced in points for participation</p>
                     <span>Nov 22</span>
                 </div>
-                <span class="activity-points">+150 points</span>
+                <span class="activity-points">+150 pts</span>
             </div>
             
             <div class="activity-item">
                 <div class="activity-details">
-                    <p>Completed 'No-Plastic Week' challenge</p>
+                    <p>'No-Plastic Week' challenge completed</p>
                     <span>Nov 17</span>
                 </div>
-                <span class="activity-points">+300 points</span>
+                <span class="activity-points">+300 pts</span>
             </div>
         </div>
 
         <div class="widget achievements-widget">
-            <h3>🌟 Achievements</h3>
-            <hr style="border: 0; border-top: 1px dashed var(--light-green); margin: 10px 0;">
+            <h3>🌟 Achievements Unlocked</h3>
+            <hr style="border: 0; border-top: 1px solid var(--light-green); margin: 10px 0;">
 
             <div class="achievement-grid">
                 <div class="achievement-card">
                     <span class="achievement-icon">🌴</span>
-                    <strong>Nature</strong>
-                    <p>Planted 10 trees this month</p>
+                    <strong>Nature Leader</strong>
+                    <p>Planted **10 trees** this month</p>
                     <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+100 points</p>
                 </div>
                 <div class="achievement-card">
                     <span class="achievement-icon">🛢️</span>
-                    <strong>Reusing</strong>
-                    <p>Reused 2L of cooking oil</p>
+                    <strong>Oil Recycler</strong>
+                    <p>Reused **2L** of cooking oil</p>
                     <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+250 points</p>
                 </div>
                 <div class="achievement-card">
                     <span class="achievement-icon">👨🏽‍👩🏻‍👧🏼‍🧒🏼</span>
-                    <strong>Team Spirit</strong>
-                    <p>All family members completed a challenge together</p>
+                    <strong>Teamwork Max</strong>
+                    <p>All members completed a challenge</p>
                     <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+300 points</p>
                 </div>
                 <div class="achievement-card">
                     <span class="achievement-icon">🚇</span>
-                    <strong>RTA Public Transport</strong>
-                    <p>Reduced CO2 by 500kg</p>
+                    <strong>Green Commuter</strong>
+                    <p>Reduced CO2 by **500kg** using RTA</p>
                     <p style="font-size: 0.9em; font-weight: bold; color: var(--point-green);">+500 points</p>
                 </div>
             </div>
         </div>
 
         <div class="widget verify-deed-widget" id="deed-widget">
-            <h3>✅ Verify Your Deed</h3> 
+            <h3>✅ Submit Green Action</h3> 
             
             <div class="deed-form" id="deed-form">
-                <p>Select your completed action and upload proof.</p>
+                <p>Log a completed action and upload photo proof for points verification.</p>
                 
-                <label for="deed-type">Green Action Completed:</label>
+                <label for="deed-type">Green Action:</label>
                 <select id="deed-type" name="deed-type">
-                    <option value="" disabled selected>     Choose an Action     </option>
-                    <option value="reused-water">💧 Reused water for plants/cleaning</option>
-                    <option value="public-transport">🚌 Used public transport or carpooled</option>
-                    <option value="reduced-electricity">💡 Reduced electricity consumption (off-peak)</option>
-                    <option value="recycled-item">♻️ Recycled a large item/bulk material</option>
-                    <option value="plastic-free">🛒 Completed a plastic-free shopping trip</option>
-                    <option value="planted-tree">🌱 Planted a tree or garden starter</option>
-                    <option value="composted">🗑️ Started or added to compost pile</option>
+                    <option value="" disabled selected>Choose an Action</option>
+                    <option value="reused-water">💧 Reused water</option>
+                    <option value="public-transport">🚌 Used public transport</option>
+                    <option value="reduced-electricity">💡 Reduced electricity</option>
+                    <option value="recycled-item">♻️ Recycled bulk material</option>
+                    <option value="plastic-free">🛒 Plastic-free shopping</option>
+                    <option value="planted-tree">🌱 Planted a tree</option>
+                    <option value="composted">🗑️ Started compost pile</option>
                 </select>
 
-                <label for="deed-by">Deed done by:</label>
+                <label for="deed-by">Action Performed By:</label>
                 <select id="deed-by" name="deed-by">
-                    <option value="" disabled selected>     Choose a family member     </option>
+                    <option value="" disabled selected>Choose a Family Member</option>
                     <option value="Father">Father Saud</option>
                     <option value="Mother">Mother Khulood</option>
                     <option value="Daughter">Daughter Khultoom</option>
                     <option value="Son">Son Abdalla</option>
-                    <option value="Full family">Full family together</option>
+                    <option value="Full family">Full family</option>
                 </select>
                 
-                <label for="proof-upload">Upload Photo Proof:</label>
+                <label for="proof-upload">Upload Proof:</label>
                 <input type="file" id="proof-upload" accept="image/*" style="width: 100%; margin-bottom: 20px;">
+                
 
-                <button id="submit-verification-btn">Submit for Verification</button>
-                <p style="font-size: 0.8em; text-align: center; color: gray;">AI Assisted Verification</p>
+                <button id="submit-verification-btn">Submit Action</button>
+                <p style="font-size: 0.8em; text-align: center; color: gray;">*Points awarded after AI Verification</p>
             </div>
         </div>
 
         <div class="widget rewards-widget">
-            <h3>🏆 Rewards & Recognition: Community Leaderboard</h3>
-            <p>See how your family compares! Top families earn exclusive rewards from local eco-friendly businesses!</p>
+            <h3>🏆 Community Leaderboard</h3>
+            <p>Compare your family's progress! Top families receive exclusive rewards from local eco-partners.</p>
 
             <table class="leaderboard-table">
                 <thead>
@@ -551,40 +476,41 @@
                         <td>🥇</td>
                         <td>The Jeons</td>
                         <td>Diamond</td>
-                        <td>9005</td>
+                        <td>9,005</td>
                     </tr>
                     <tr>
-                        <td>🥈</td>
-                        <td>The Hashimis</td>
-                        <td>Gold</td>
-                        <td>3600</td>
+                        <td>**🥈**</td>
+                        <td>**The Hashimis**</td>
+                        <td>**Gold**</td>
+                        <td>**3,600**</td>
                     </tr>
                     <tr>
                         <td>🥉</td>
                         <td>The Riveras</td>
                         <td>Silver</td>
-                        <td>2100</td>
+                        <td>2,100</td>
                     </tr>
                     <tr>
                         <td>🏅</td>
                         <td>The Sharmas</td>
                         <td>Bronze</td>
-                        <td>1355</td>
+                        <td>1,355</td>
                     </tr>
                 </tbody>
             </table>
-            <p style="text-align: right; margin-top: 15px;"><a href="#" style="color: var(--dark-green);">View all Rewards & Partner Offers &rarr;</a></p>
+            <p style="text-align: right; margin-top: 15px;"><a href="#" style="color: var(--dark-green); font-weight: 600;">View Partner Rewards &rarr;</a></p>
         </div>
 
 
     <div class="widget co2-reduction-widget">
-        <h3>🌍 Estimated CO₂ Reduction</h3>
+        <h3>🌍 Environmental Impact Tracker (YTD)</h3>
         
-        <div class="reduction-summary-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <div class="reduction-summary-grid">
 
-            <div class="metric-card water-card" style="text-align: center;">
+            <div class="metric-card water-card">
+                <h4 class="graph-title" style="color: #004d40; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">💧 Water Savings</h4>
+                
                 <div class="doughnut-chart" style="
-                    /* Inline styles to simulate the graph appearance based on requirements */
                     --size: 150px;
                     --border-width: 15px;
                     width: var(--size);
@@ -596,7 +522,6 @@
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
-                    /* 98.38% fill (Water Blue: #2196F3) */
                     background: conic-gradient(#2196F3 0% 98.38%, #e3f2fd 98.38% 100%); 
                 ">
                     <div style="
@@ -604,20 +529,20 @@
                         top: 50%;
                         left: 50%;
                         transform: translate(-50%, -50%);
-                        width: 120px; /* (150 - 15*2) = 120 approx */
+                        width: 120px;
                         height: 120px;
                         background-color: #ffffff;
                         border-radius: 50%;
                     "></div>
                     
                     <span class="value" style="position: relative; font-size: 1.8em; font-weight: bold; color: #004d40;">98.38%</span>
-                    <span class="label" style="position: relative; font-size: 0.8em; color: #666; margin-top: 5px;">💧 Water Saved</span>
+                    <span class="label" style="position: relative; font-size: 0.8em; color: #666; margin-top: 5px;">Target Reached</span>
                 </div>
-                <p class="data-point" style="margin-top: 15px; font-size: 0.9em;"><strong>303,000L</strong> of Water Saved</p>
+                <p class="data-point" style="margin-top: 15px; text-align: center;">**303,000 Litres** Saved</p>
             </div>
 
-            <div class="metric-card energy-card" style="text-align: center;">
-                <h4 class="graph-title" style="color: #004d40; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">⚡ Energy Saved (kWh)</h4>
+            <div class="metric-card energy-card">
+                <h4 class="graph-title" style="color: #004d40; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">⚡ Energy Savings (kWh)</h4>
                 
                 <div class="bar-chart-container" style="
                     display: flex;
@@ -666,27 +591,27 @@
                         <div class="bar" style="width: 80%; background-color: #ff9800; height: 25%;"></div><span class="bar-label" style="font-size: 0.7em; color: #666; margin-top: 5px;">Dec</span>
                     </div>
                 </div>
-                <p class="data-point" style="margin-top: 15px; font-size: 0.9em;"><strong>18,904 kWh</strong> Saved out of 200,000 kWh Target</p>
+                <p class="data-point" style="margin-top: 15px; text-align: center;">**18,904 kWh** Saved</p>
             </div>
 
-            <div class="metric-card tree-card" style="text-align: center;">
+            <div class="metric-card tree-card">
                 <h4 class="graph-title" style="color: #004d40; margin-top: 0; margin-bottom: 15px; font-size: 1.1em;">🌴 Trees Planted (Total 25)</h4>
                 
                 <div class="pictograph-container" style="text-align: left; padding: 10px; background-color: #ffffff; border-radius: 5px;">
                     <div class="tree-month" style="display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px dotted #e8f5e9;">
-                        <span class="month-label" style="font-weight: bold; font-size: 0.9em; color: #004d40; flex-basis: 30%;">Jan-Mar:</span>
+                        <span class="month-label" style="font-weight: bold; font-size: 0.9em; color: #004d40; flex-basis: 30%;">Q1 (Jan-Mar):</span>
                         <span class="tree-icons" style="flex-basis: 70%; font-size: 1.5em; white-space: normal; line-height: 1.2;">🌳🌳🌳🌳🌳</span> </div>
                     <div class="tree-month" style="display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px dotted #e8f5e9;">
-                        <span class="month-label" style="font-weight: bold; font-size: 0.9em; color: #004d40; flex-basis: 30%;">Apr-Jun:</span>
+                        <span class="month-label" style="font-weight: bold; font-size: 0.9em; color: #004d40; flex-basis: 30%;">Q2 (Apr-Jun):</span>
                         <span class="tree-icons" style="flex-basis: 70%; font-size: 1.5em; white-space: normal; line-height: 1.2;">🌳🌳🌳🌳🌳🌳🌳</span> </div>
                     <div class="tree-month" style="display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px dotted #e8f5e9;">
-                        <span class="month-label" style="font-weight: bold; font-size: 0.9em; color: #004d40; flex-basis: 30%;">Jul-Sep:</span>
+                        <span class="month-label" style="font-weight: bold; font-size: 0.9em; color: #004d40; flex-basis: 30%;">Q3 (Jul-Sep):</span>
                         <span class="tree-icons" style="flex-basis: 70%; font-size: 1.5em; white-space: normal; line-height: 1.2;">🌳🌳🌳</span> </div>
                     <div class="tree-month" style="display: flex; justify-content: space-between; align-items: center; padding: 5px 0;">
-                        <span class="month-label" style="font-weight: bold; font-size: 0.9em; color: #004d40; flex-basis: 30%;">Oct-Dec:</span>
+                        <span class="month-label" style="font-weight: bold; font-size: 0.9em; color: #004d40; flex-basis: 30%;">Q4 (Oct-Dec):</span>
                         <span class="tree-icons" style="flex-basis: 70%; font-size: 1.5em; white-space: normal; line-height: 1.2;">🌳🌳🌳🌳🌳🌳🌳🌳🌳🌳</span> </div>
                 </div>
-                <p class="data-point" style="margin-top: 15px; font-size: 0.9em;"><strong>25 Trees</strong> Planted (Year-to-Date)</p>
+                <p class="data-point" style="margin-top: 15px; text-align: center;">Total **25 Trees** Planted (250 kg CO₂ absorbed)</p>
             </div>
         </div>
     </div>
@@ -696,120 +621,74 @@
         <div class="modal-content">
             <span class="close" id="close-modal">&times;</span>
             
-            <div id="verification-process">
-                <h3 style="color: var(--dark-green); margin-bottom: 5px;">Verification in Process</h3>
-                <p id="verification-message" style="color: #666; margin-top: 0; font-size: 0.9em;">AI is analyzing your deed...</p>
-                
-                <svg class="leaf-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path id="leaf-path" d="M50 10 C 60 20, 80 20, 90 30 C 90 40, 70 70, 50 90 C 30 70, 10 40, 10 30 C 20 20, 40 20, 50 10 Z M50 90 L 50 10 M50 40 L 70 30 M50 40 L 30 30" stroke="#004d40" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+            <h3 id="initial-message" style="color: var(--dark-green);">Submitting Deed for Review...</h3>
 
-                <span class="success-tick" style="display: none;">&#10004;</span>
-                <p class="points-allotted" style="display: none;">15 points allotted!</p>
-            </div>
+            <svg class="leaf-svg" viewBox="0 0 100 100" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path id="leaf-path" d="M 50 10 L 70 30 L 60 40 L 80 60 L 50 90 L 20 60 L 40 40 L 30 30 Z" />
+            </svg>
+            <p id="verification-message" style="color: #666;">Our AI is verifying the submission. This usually takes a moment.</p>
+            
+            <span class="success-tick" style="display: none;">✔️</span>
+            <p class="points-allotted" style="display: none;">**+200 Points** Awarded!</p>
+            <p id="success-message" style="display: none;">Your action has been verified and points are added to your score!</p>
+
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const submitBtn = document.getElementById('submit-verification-btn');
-            const modal = document.getElementById('verification-modal');
-            const closeModalBtn = document.getElementById('close-modal');
-            const modalContent = document.querySelector('.modal-content');
+        // Modal / Pop-up Logic
+        var modal = document.getElementById("verification-modal");
+        var btn = document.getElementById("submit-verification-btn");
+        var span = document.getElementById("close-modal");
+
+        btn.onclick = function(event) {
+            event.preventDefault(); // Prevent form submission if it were a real form
+            
+            // Basic validation check (ensure a deed is selected)
+            const deedType = document.getElementById('deed-type').value;
+            const deedBy = document.getElementById('deed-by').value;
+            if (!deedType || !deedBy) {
+                alert("Please select a Green Action and the family member who performed it.");
+                return;
+            }
+            
+            // Reset modal state
+            modal.querySelector('.modal-content').classList.remove('success');
+            document.getElementById('success-message').style.display = 'none';
+            document.getElementById('initial-message').style.display = 'block';
+            document.getElementById('verification-message').style.display = 'block';
+            
+            // Show the modal
+            modal.style.display = "block";
+            
+            // Reset and start animation
             const leafPath = document.getElementById('leaf-path');
-            const successTick = document.querySelector('.success-tick');
-            const pointsAllottedText = document.querySelector('.points-allotted');
-            const progressLine = document.getElementById('progress-line');
-            const familyTotalScore = document.getElementById('family-total-score');
-            const leagueProgressText = document.getElementById('league-progress-text');
+            leafPath.style.animation = 'none';
+            leafPath.offsetHeight; // Trigger reflow
+            leafPath.style.animation = 'paint-leaf 3s linear forwards';
 
-            // Initial state variables (Read from the existing HTML)
-            let currentPoints = 3600; // Hardcoded from HTML for simplicity
-            const maxPoints = 10000;
-            const pointsToAdd = 15;
-            const initialFatherScore = 950; // Points added to a random family member
+            // Simulate the verification process (e.g., 4 seconds)
+            setTimeout(function() {
+                // Change modal content to success state
+                modal.querySelector('.modal-content').classList.add('success');
+                document.getElementById('success-message').style.display = 'block';
 
-            // Function to update the progress bar and text
-            function updateLeagueWidget(newPoints) {
-                const newPercentage = (newPoints / maxPoints) * 100;
-                const progressLineAfter = progressLine.parentElement.querySelector('.progress-line::after');
-                
-                // 1. Update Progress Bar Style
-                progressLine.style.background = `linear-gradient(to right, #D4AF37 0%, #D4AF37 ${newPercentage}%, var(--gray-light) ${newPercentage}%, var(--gray-light) 100%)`;
-                
-                // 2. Update Progress Bar Pseudo-Element (requires DOM manipulation via CSS variable/style update)
-                // Note: Direct style update on a pseudo-element is impossible in JS. We update the containing div's style and rely on CSS to transition it.
-                // For the `::after` content and position, we update the parent's attribute or inline style for the `left` transition.
-                progressLine.style.setProperty('--progress-left', `${newPercentage}%`); // This relies on a new CSS variable if we wanted true dynamic positioning, but here we'll update the initial element's ::after content and position manually in the JS for a visual effect.
-                
-                // Update the visible progress text/score (The <p> element is the easiest to update)
-                leagueProgressText.textContent = `${newPoints} out of ${maxPoints} points on the way to the Diamond League!`;
+                // In a real app, update scores here. For the demo, update the displayed total.
+                // Note: The original progress bar logic uses inline CSS which makes live updates difficult 
+                // without calculating new percentages, so we only update the list text.
+                document.getElementById('family-total-score').innerHTML = '<strong>3,800 pts</strong>'; 
+            }, 4000); // 4-second delay
+        }
 
-                // Update the score within the progress bar using direct style manipulation (not possible, so we'll just update the visible text below it and the family total)
-                
-                // To update the ::after content we modify the existing content rule directly in the DOM
-                const progressStyle = document.createElement('style');
-                progressStyle.textContent = `.progress-line::after { content: '${newPoints}/${maxPoints} Pts' !important; left: ${newPercentage}% !important; }`;
-                progressLine.appendChild(progressStyle);
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
 
-                // 3. Update Family Total Score
-                familyTotalScore.innerHTML = `<strong>${newPoints} pts</strong>`;
-
-                // 4. Update an individual member's score (e.g., Father Saud)
-                document.getElementById('score-father').innerHTML = `<strong>${initialFatherScore + pointsToAdd} pts</strong>`;
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
-
-            // Function to reset the modal for reuse
-            function resetModal() {
-                modalContent.classList.remove('success');
-                leafPath.style.animation = 'none'; // Stop animation
-                leafPath.style.strokeDashoffset = '450'; // Reset leaf to unpainted
-                successTick.style.display = 'none';
-                pointsAllottedText.style.display = 'none';
-                document.getElementById('verification-process').style.display = 'block';
-            }
-
-            // Handle button click
-            submitBtn.onclick = function() {
-                // Perform form validation first (not implemented here, but should be done)
-                
-                resetModal(); // Ensure clean slate
-                modal.style.display = 'block';
-                
-                // Start the leaf painting animation
-                // Must trigger reflow/repaint to restart animation
-                void leafPath.offsetWidth; 
-                leafPath.style.animation = 'paint-leaf 3s linear forwards';
-                
-                // Simulate verification time (3 seconds to match the animation)
-                setTimeout(() => {
-                    // 1. Calculate new points
-                    const newTotalPoints = currentPoints + pointsToAdd;
-                    currentPoints = newTotalPoints; // Update global state
-                    
-                    // 2. Update the league progress widget
-                    updateLeagueWidget(newTotalPoints);
-
-                    // 3. Transition modal to Success state
-                    modalContent.classList.add('success');
-                    
-                }, 3000); // 3 seconds delay for animation
-            }
-
-            // Handle close button click
-            closeModalBtn.onclick = function() {
-                modal.style.display = 'none';
-                resetModal();
-            }
-
-            // Handle click outside the modal
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                    resetModal();
-                }
-            }
-        });
+        }
     </script>
 </body>
 </html>
