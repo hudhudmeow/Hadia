@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hadia: The Green Family Challenge Prototype</title>
+    <title>Hadia: The Green Family Challenge</title>
     <style>
         /* Define your custom shades of green */
         :root {
@@ -13,124 +13,145 @@
             --accent-green: #81c784; /* Accent/Button hover color (Celadon) */
             --white: #ffffff;
             --off-white: #f7fcf9; /* For content cards */
+            --gray-text: #333;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--light-green); /* Light green background */
-            color: var(--dark-green); /* Dark green text */
+            background-color: var(--light-green); 
+            color: var(--gray-text); /* Use a darker, professional gray for body text */
             text-align: center;
             line-height: 1.6;
         }
         .header {
             background-color: var(--dark-green);
             color: var(--white);
-            padding: 20px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 40px 0; /* Increased spacing */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         .header h1 {
             margin: 0;
-            font-size: 2.5em;
-            letter-spacing: 1px;
+            font-size: 3em; /* Larger title */
+            letter-spacing: 2px;
+            font-weight: 300; /* Lighter font weight for modern feel */
         }
         .header p {
-            margin: 5px 0 0;
-            font-size: 1.1em;
-            opacity: 0.9;
+            margin: 10px 0 0;
+            font-size: 1.2em;
+            opacity: 0.8;
+            font-weight: 300;
         }
         .content {
-            padding: 60px 20px;
-            max-width: 1200px;
+            padding: 80px 20px; /* Increased spacing */
+            max-width: 1300px;
             margin: 0 auto;
         }
         .signup-button {
             display: inline-block;
-            padding: 15px 40px;
-            margin-top: 30px;
-            background-color: var(--mid-green); /* Main button green */
+            padding: 18px 50px; /* Larger button */
+            margin: 40px 0; /* Increased spacing */
+            background-color: var(--mid-green); 
             color: var(--white);
             text-decoration: none;
-            font-size: 1.3em;
-            font-weight: bold;
-            border-radius: 50px; /* Pill shape */
+            font-size: 1.4em;
+            font-weight: 600; /* Slightly bolder for emphasis */
+            border-radius: 50px; 
             transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 4px 10px rgba(0, 77, 64, 0.2);
+            box-shadow: 0 6px 15px rgba(0, 77, 64, 0.3);
+            letter-spacing: 0.5px;
         }
         .signup-button:hover {
             background-color: var(--accent-green);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
         .feature-section {
-            padding: 60px 0;
+            padding: 80px 0; /* Increased spacing */
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 40px;
+            gap: 100px; /* Increased spacing between features */
         }
         .feature-row {
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-between; /* Adjusted for better spacing */
             width: 100%;
-            max-width: 1000px;
-            margin-bottom: 50px;
+            max-width: 1100px;
             text-align: left;
         }
         .feature-row:nth-child(even) {
-            flex-direction: row-reverse; /* Alternate image and text sides */
+            flex-direction: row-reverse; 
         }
         .feature-text {
             max-width: 45%;
-            padding: 20px;
-            background: var(--off-white);
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            padding: 30px; /* Increased internal padding */
+            background: var(--white); /* White background for text cards */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* More subtle shadow */
+            border-left: 5px solid var(--mid-green); /* Accent border */
         }
         .feature-text h3 {
-            color: var(--mid-green);
-            font-size: 1.8em;
+            color: var(--dark-green); /* Dark green for headings */
+            font-size: 2em; /* Larger headings */
             margin-top: 0;
+            font-weight: 600;
+        }
+        .feature-text p {
+             font-size: 1.1em;
+             margin-bottom: 20px;
+             color: var(--dark-green); /* Text is dark green */
         }
         .mockup-container {
-            width: 40%;
-            /* Placeholder for image/mockup */
-            height: 450px; 
-            background: var(--dark-green); /* App container background */
+            width: 45%; /* Slightly wider container */
+            height: 500px; /* Taller container */
+            background: var(--dark-green); 
             border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2em;
+            font-size: 1.4em;
             color: var(--light-green);
             font-weight: bold;
-            overflow: hidden; /* Hide overflow if an image is placed */
+            overflow: hidden; 
             position: relative;
-        }
-        .mockup-container::before {
-             content: "Mockup: ";
-             position: absolute;
-             top: 10px;
-             left: 10px;
-             font-size: 0.7em;
-             color: rgba(255, 255, 255, 0.5);
         }
         /* Style for the visual placeholder text */
         .mockup-label {
             padding: 20px;
             text-align: center;
         }
+        .hero-text {
+            max-width: 50%;
+        }
+        .hero-text h1 {
+            font-size: 3em;
+            color: var(--dark-green);
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: var(--dark-green);
+            margin-bottom: 40px;
+        }
         .footer {
             background-color: var(--dark-green);
             color: var(--accent-green);
-            padding: 20px 0;
-            font-size: 0.9em;
+            padding: 30px 0; /* Increased spacing */
+            font-size: 1em;
+            margin-top: 80px; /* Added top margin */
+        }
+        .footer p {
+            margin: 5px 0;
+            font-weight: 300;
         }
         .footer a {
             color: var(--light-green);
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 15px; /* Increased spacing */
+            padding: 5px 0;
             transition: color 0.3s;
         }
         .footer a:hover {
@@ -142,73 +163,67 @@
 
     <div class="header">
         <h1>🌿 Hadia: The Green Family Challenge 🏆</h1> 
-        <p>Turning sustainability into a fun, competitive and impactful family game.</p>
+        <p>Sustainability. Simplified. Rewarded.</p>
     </div>
-    
-    <div style="margin-top: 40px;"/div>
-    
-    <div>
-        <a href="signup.html" class="signup-button">Start the Green Challenge Today!</a>
-    </div>
-
-    <div style="margin-bottom: 60px;"></div>
     
     <div class="content">
-        <div class="feature-row" style="margin-bottom: 80px;">
-            <div class="feature-text" style="max-width: 50%;">
-                <h1>Imagine Duolingo, but for Going Green! </h1>
-                <p>Our high-quality mobile app prototype makes sustainability fun, engaging and impactful. Families compete to reduce energy/water consumption, reuse items and adopt eco-friendly habits.</p>
-                <p>Advance through Dynamic Leaderboards & Leagues (Bronze, Silver, Gold, Platinum) and earn real-world rewards, like coupons from local businesses.</p>
-                <a href="#features" class="signup-button">Explore Features</a>
+        <div class="feature-row" style="margin-bottom: 100px;">
+            <div class="hero-text">
+                <h1>Duolingo for Green Living.</h1>
+                <p>The high-impact mobile app prototype that turns reducing your family's carbon footprint into a fun, competitive, and rewarding game. Advance through leagues and earn real-world rewards.</p>
+                <a href="signup.html" class="signup-button">Start the Green Challenge Today!</a>
             </div>
             <div class="mockup-container">
                 <div class="mockup-label">
-                                    </div>
+                    
+                </div>
             </div>
         </div>
 
         <div class="feature-section" id="features">
-            <title>The Power Behind the Progress</title>
+            <h2 style="font-size: 2.5em; color: var(--dark-green); margin-bottom: 60px; font-weight: 300;">The Power Behind the Progress</h2>
             
             <div class="feature-row">
                 <div class="mockup-container">
                     <div class="mockup-label">
-                                            </div>
+                        
+                    </div>
                 </div>
                 <div class="feature-text">
-                    <h3> Real-World Actions, Verified Points</h3>
-                    <p>Families earn individual points for specific green actions like reusing water, using public transport, planting or reducing waste.</p>
-                    <p>Actions like reusing water are verified using AI-Assisted Photo Recognition to check for common objects (buckets, plants, etc.), ensuring fair competition and accurate impact measurement.</p>
-                    <p>These individual scores combine to the family's total, driving collective progress.</p>
+                    <h3>Verified Actions, Earned Points</h3>
+                    <p>Earn points for tangible green actions: water reuse, public transport, planting, and waste reduction.</p>
+                    <p>Our AI-Assisted Photo Recognition verifies completion (e.g., checking for specific objects), ensuring fair competition and reliable impact measurement. Individual scores combine for collective family progress.</p>
                 </div>
             </div>
 
             <div class="feature-row">
                 <div class="mockup-container">
                     <div class="mockup-label">
-                                            </div>
+                        
+                    </div>
                 </div>
                 <div class="feature-text">
                     <h3>📉 Track Your True Impact</h3>
-                    <p>Say goodbye to guesswork. Our Interactive Progress Tracking uses visually compelling graphs to show your family's progress over time.</p>
-                    <p>See your actual savings in kWh, liters of water, kg of waste, and even your Estimated CO2 Reduction. This clear demonstration of impact powerfully reinforces positive behavior.</p>
-                    <p>For governments, this provides crucial data to track and report on climate goals.</p>
+                    <p>See real-time progress with interactive tracking graphs. Eliminate guesswork and view actual savings in **kWh, liters of water, kg of waste**, and Estimated **CO2 Reduction**.</p>
+                    <p>This clear impact data reinforces positive habits and provides governments with essential metrics for climate reporting.</p>
                 </div>
             </div>
             
             <div class="feature-row">
                 <div class="mockup-container">
                     <div class="mockup-label">
-                                             </div>
+                        
+                    </div>
                 </div>
                 <div class="feature-text">
-                    <h3>🎯 Personalized Goals & Green Tips</h3>
-                    <p>Set your own weekly or monthly Green Goals (e.g., "Reduce electricity by 10%," "Reuse 5 liters of water") with AI-assistance to suggest realistic targets based on past performance.</p>
-                    <p>Access a curated section with Educational Content (videos, infographics, guides) on topics like composting and sustainable shopping, empowering your family with knowledge.</p>
+                    <h3>🎯 Personalized Goals & Knowledge</h3>
+                    <p>Set custom weekly/monthly Green Goals (e.g., "10% electricity reduction") with AI guidance for realistic targets based on history.</p>
+                    <p>Access curated Educational Content (guides, videos) on sustainable shopping, composting, and more, empowering your family with knowledge.</p>
                 </div>
             </div>
         </div>
 
+    </div>
 
     <div class="footer">
         <p>Accelerating Progress Towards Critical Sustainability Goals</p>
