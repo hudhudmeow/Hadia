@@ -1,138 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hadia: The Green Family Challenge Prototype</title>
-    <style>
-        /* Define your custom shades of green */
-        :root {
-            --dark-green: #004d40; /* Darker, deep green */
-            --mid-green: #4caf50; /* Primary, leaf green */
-            --light-green: #e8f5e9; /* Very light background green */
-            --accent-green: #81c784; /* Accent/Button hover color */
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Slightly modern font */
-            margin: 0;
-            padding: 0;
-            background-color: var(--light-green); /* Light green background */
-            color: var(--dark-green); /* Dark green text */
-            text-align: center;
-            line-height: 1.6;
-        }
-        .header {
-            background-color: var(--dark-green);
-            color: white;
-            padding: 40px 0; /* Increased padding */
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZafEco: The Green Family Challenge Prototype</title>
+    <style>
+        /* Define your custom shades of green */
+        :root {
+            --dark-green: #004d40; /* Darker, deep green (Emerald/Forest) */
+            --mid-green: #4caf50; /* Primary, leaf green (App Accent) */
+            --light-green: #e8f5e9; /* Very light background green (Mint Cream) */
+            --accent-green: #81c784; /* Accent/Button hover color (Celadon) */
+            --white: #ffffff;
+            --off-white: #f7fcf9; /* For content cards */
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-green); /* Light green background */
+            color: var(--dark-green); /* Dark green text */
+            text-align: center;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
         .header p {
+            margin: 5px 0 0;
             font-size: 1.1em;
-            opacity: 0.8;
+            opacity: 0.9;
         }
-        .content {
-            padding: 50px 20px;
-            max-width: 1000px; /* Wider content area for mockups */
-            margin: 0 auto;
-        }
-        .signup-button {
-            display: inline-block;
-            padding: 15px 35px;
-            margin: 30px 0 60px 0; /* Adjusted margins */
-            background-color: var(--mid-green); /* Main button green */
-            color: white;
-            text-decoration: none;
-            font-size: 1.3em;
-            font-weight: bold;
-            border-radius: 50px; /* Pill shape */
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .signup-button:hover {
-            background-color: var(--accent-green);
-            transform: translateY(-2px);
-        }
-        
-        /* New Styles for Mockups */
-        .mockup-section {
+        .content {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .signup-button {
+            display: inline-block;
+            padding: 15px 40px;
+            margin-top: 30px;
+            background-color: var(--mid-green); /* Main button green */
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-radius: 50px; /* Pill shape */
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 77, 64, 0.2);
+        }
+        .signup-button:hover {
+            background-color: var(--accent-green);
+            transform: translateY(-2px);
+        }
+        .feature-section {
+            padding: 60px 0;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+        .feature-row {
+            display: flex;
+            align-items: center;
             justify-content: space-around;
-            align-items: flex-start;
-            gap: 20px;
-            margin-top: 40px;
-            flex-wrap: wrap; /* Allows wrapping on smaller screens */
-        }
-        .mockup-item {
-            max-width: 300px;
-            text-align: left;
-            padding: 20px;
-            border-radius: 12px;
-            background-color: white;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-        .mockup-item:hover {
-            transform: translateY(-5px);
-        }
-        .mockup-item h3 {
-            color: var(--mid-green);
-            border-bottom: 2px solid var(--light-green);
-            padding-bottom: 10px;
-        }
-        .mockup {
             width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
+            max-width: 1000px;
+            margin-bottom: 50px;
+            text-align: left;
         }
-    </style>
+        .feature-row:nth-child(even) {
+            flex-direction: row-reverse; /* Alternate image and text sides */
+        }
+        .feature-text {
+            max-width: 45%;
+            padding: 20px;
+            background: var(--off-white);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+        .feature-text h3 {
+            color: var(--mid-green);
+            font-size: 1.8em;
+            margin-top: 0;
+        }
+        .mockup-container {
+            width: 40%;
+            /* Placeholder for image/mockup */
+            height: 450px; 
+            background: var(--dark-green); /* App container background */
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: var(--light-green);
+            font-weight: bold;
+            overflow: hidden; /* Hide overflow if an image is placed */
+            position: relative;
+        }
+        .mockup-container::before {
+             content: "Mockup: ";
+             position: absolute;
+             top: 10px;
+             left: 10px;
+             font-size: 0.7em;
+             color: rgba(255, 255, 255, 0.5);
+        }
+        /* Style for the visual placeholder text */
+        .mockup-label {
+            padding: 20px;
+            text-align: center;
+        }
+        .footer {
+            background-color: var(--dark-green);
+            color: var(--accent-green);
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+        .footer a {
+            color: var(--light-green);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        .footer a:hover {
+            color: var(--mid-green);
+        }
+    </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>🌱 Hadia: The Green Family Challenge</h1>
-        <p>Making Sustainability a Family Win. Gamified, Measurable, and Impactful.</p>
-    </div>
+    <div class="header">
+        <h1>🌿 Hadia: The Green Family Challenge 🏆</h1> 
+        <p>Turning sustainability into a fun, competitive, and impactful family game.</p>
+    </div>
 
-    <div class="content">
-        <h2>Compete, Track, and Thrive for a Greener World</h2>
-        <p>Our mobile app transforms daily eco-friendly actions—from reusing water to reducing waste—into a fun, competitive, and rewarding family challenge.</p>
-        
-        <a href="signup.html" class="signup-button">Start Your Green Challenge Today!</a>
-        
-        <div class="mockup-section">
-            
-            <div class="mockup-item">
-                <h3>Dynamic Leagues & Rewards</h3>
-                                <p>Advance through Bronze, Silver, Gold and Diamond leagues annually by earning points for green actions. Top-performing families win coupons from local businesses and grand prizes.</p>
+    <div class="content">
+        <div class="feature-row" style="margin-bottom: 80px;">
+            <div class="feature-text" style="max-width: 50%;">
+                <h2>Imagine Duolingo, but for Going Green! [cite: 79]</h2>
+                <p>Our high-quality mobile app prototype makes sustainability fun, engaging, and impactful[cite: 78]. Families compete to reduce energy/water consumption, reuse items, and adopt eco-friendly habits[cite: 71].</p>
+                <p>Advance through **Dynamic Leaderboards & Leagues** (Bronze, Silver, Gold, Platinum) and earn real-world rewards, like coupons from local businesses[cite: 10, 11, 15, 17].</p>
+                <a href="#features" class="signup-button">Explore Features</a>
             </div>
-            
-            <div class="mockup-item">
-                <h3>Track Real-World Impact</h3>
-                                <p>Visualize your family's progress with clear graphs and charts. See your actual savings in kWh, liters, and estimated CO2 reduction to reinforce positive behavior.</p>
+            <div class="mockup-container">
+                <div class="mockup-label">
+                                    </div>
             </div>
-
-            <div class="mockup-item">
-                <h3>AI-Assisted Verification</h3>
-                                <p>Ensure fair play and accurate scoring with AI-assisted photo verification. Easily submit proof of actions, like reusing water or plastics, to earn points instantly and reduce manual moderation.</p>
-            </div>
-
         </div>
-            </div>
 
-    <div class="footer">
-        <p style="margin-top: 50px; font-size: 0.9em; color: var(--dark-green); padding-bottom: 20px;">
-            <a href="#" style="color: var(--dark-green); text-decoration: none; margin: 0 10px;">Leagues & Leaderboards</a> |
-            <a href="#" style="color: var(--dark-green); text-decoration: none; margin: 0 10px;">Green Action Points</a> |
-            <a href="#" style="color: var(--dark-green); text-decoration: none; margin: 0 10px;">Personalized Goals</a> |
-            <a href="#" style="color: var(--dark-green); text-decoration: none; margin: 0 10px;">Sponsor Benefits</a>
-        </p>
-    </div>
-    
+        <div class="feature-section" id="features">
+            <h2>The Power Behind the Progress</h2>
+            
+            <div class="feature-row">
+                <div class="mockup-container">
+                    <div class="mockup-label">
+                                            </div>
+                </div>
+                <div class="feature-text">
+                    <h3>✅ Real-World Actions, Verified Points</h3>
+                    <p>Families earn individual points for specific green actions like **reusing water**, **using public transport**, **planting**, or **reducing waste**[cite: 20, 81].</p>
+                    <p>Actions like reusing water are verified using **AI-Assisted Photo Recognition** to check for common objects (buckets, plants, etc.) [cite: 37, 38], ensuring fair competition and accurate impact measurement[cite: 62].</p>
+                    <p>These individual scores combine to the family's total, driving collective progress[cite: 21].</p>
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="mockup-container">
+                    <div class="mockup-label">
+                                            </div>
+                </div>
+                <div class="feature-text">
+                    <h3>📉 Track Your True Impact</h3>
+                    <p>Say goodbye to guesswork. Our **Interactive Progress Tracking** uses visually compelling graphs to show your family's progress over time[cite: 31, 32].</p>
+                    <p>See your actual savings in **kWh, liters of water, kg of waste**, and even your **Estimated CO2 Reduction**[cite: 33, 47]. This clear demonstration of impact powerfully reinforces positive behavior[cite: 34].</p>
+                    <p>For governments, this provides crucial data to track and report on climate goals[cite: 50].</p>
+                </div>
+            </div>
+            
+            <div class="feature-row">
+                <div class="mockup-container">
+                    <div class="mockup-label">
+                                             </div>
+                </div>
+                <div class="feature-text">
+                    <h3>🎯 Personalized Goals & Green Tips</h3>
+                    <p>Set your own weekly or monthly **Green Goals** (e.g., "Reduce electricity by 10%," "Reuse 5 liters of water") with AI-assistance to suggest realistic targets based on past performance[cite: 27, 28, 86].</p>
+                    <p>Access a curated section with **Educational Content** (videos, infographics, guides) on topics like composting and sustainable shopping, empowering your family with knowledge[cite: 56, 57, 59].</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="signup.html" class="signup-button">Start the Green Challenge Today!</a>
+    </div>
+
+    <div class="footer">
+        <p>Accelerating Progress Towards Critical Sustainability Goals [cite: 73]</p>
+        <p>
+            <a href="#">Leagues & Leaderboards</a> |
+            <a href="#">Point System</a> |
+            <a href="#">AI Verification</a> |
+            <a href="#">Carbon Tracking</a> |
+            <a href="#">About ZafEco</a>
+        </p>
+    </div>
+    
 </body>
 </html>
