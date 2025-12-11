@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leagues & Leaderboards | Hadia: Green Family Challenge</title>
+    <style>
+        :root {
+            --dark-green: #004d40;
+            --mid-green: #4caf50;
+            --light-green: #e8f5e9;
+            --accent-green: #81c784;
+            --white: #ffffff;
+            --off-white: #f7fcf9;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-green);
+            color: var(--dark-green);
+            text-align: center;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 30px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+        .header p {
+            margin: 5px 0 0;
+            font-size: 1em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .feature-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 40px;
+            margin-bottom: 50px;
+            text-align: left;
+        }
+        .feature-text {
+            max-width: 50%;
+            padding: 20px;
+        }
+        .feature-text h2 {
+            color: var(--mid-green);
+        }
+        .mockup-container {
+            width: 40%;
+            height: 400px;
+            background: var(--dark-green);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            color: var(--light-green);
+            font-weight: bold;
+            position: relative;
+        }
+        .mockup-container::before {
+             content: "Mockup: ";
+             position: absolute;
+             top: 10px;
+             left: 10px;
+             font-size: 0.7em;
+             color: rgba(255, 255, 255, 0.5);
+        }
+        .mockup-label {
+            padding: 20px;
+            text-align: center;
+        }
+        .footer {
+            background-color: var(--dark-green);
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+        .footer a {
+            color: var(--light-green);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        .footer a:hover {
+            color: var(--mid-green);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🏆 Dynamic Leagues & Leaderboards</h1>
+        <p>Gamifying sustainability for continuous motivation and collective success.</p>
+    </div>
+
+    <div class="content">
+        <div class="feature-row">
+            <div class="feature-text">
+                <h2>Climb the Ranks: Bronze to Platinum</h2>
+                <p>The core of the Hadia experience is the gamified progression system. Families start in the **Bronze League** and advance by consistently earning points through Green Actions.</p>
+                <ul>
+                    <li><strong>League Structure:</strong> Families progress through distinct tiers: **Bronze, Silver, Gold, and Platinum (or Diamond)**.</li>
+                    <li><strong>Promotion:</strong> The top-performing families (e.g., the top two) in a league period are upgraded to the next level.</li>
+                    <li><strong>Sustained Engagement:</strong> This tiered system provides continuous motivation and a sense of achievement, preventing the "burnout" common in flat leaderboards.</li>
+                </ul>
+            </div>
+            <div class="mockup-container">
+                <div class="mockup-label">
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-row" style="flex-direction: row-reverse;">
+            <div class="feature-text">
+                <h2>Family Score vs. Individual Effort</h2>
+                <p>Hadia encourages both personal responsibility and family teamwork. While individuals have their own accounts and earn points, their scores combine to boost the **Family Score** which determines the League ranking.</p>
+                <p>Families are also ranked against others in the same city, fostering a healthy, localized community competition and a strong collective push for sustainability goals.</p>
+            </div>
+            <div class="mockup-container">
+                <div class="mockup-label">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="index.html">Home</a> |
+        <a href="leagues-leaderboards.html">Leagues & Leaderboards</a> |
+        <a href="reward-system.html">Reward System</a> |
+        <a href="ai-verification.html">AI Verification</a> |
+        <a href="carbon-tracking.html">Carbon Tracking</a> |
+        <a href="profiteers.html">Profits for All</a> |
+        <a href="about-hadia.html">About Hadia</a>
+    </div>
+    
+</body>
+</html>
