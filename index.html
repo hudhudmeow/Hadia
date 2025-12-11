@@ -3,72 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco-League Community Prototype</title>
+    <title>ZafEco: The Green Family Challenge Prototype</title>
     <style>
-        /* Define your custom shades of green */
+        /* Define your custom shades of green and a neutral accent for professionalism */
         :root {
-            --dark-green: #004d40; /* Darker, deep green */
-            --mid-green: #4caf50; /* Primary, leaf green */
+            --dark-green: #004d40; /* Darker, deep green for text and headers */
+            --mid-green: #4caf50; /* Primary, leaf green for CTAs and accents */
             --light-green: #e8f5e9; /* Very light background green */
+            --off-white: #f7fcf9; /* Near-white background for main content */
             --accent-green: #81c784; /* Accent/Button hover color */
+            --shadow-color: rgba(0, 0, 0, 0.1);
         }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--light-green); /* Light green background */
-            color: var(--dark-green); /* Dark green text */
+            background-color: var(--light-green); 
+            color: var(--dark-green);
             text-align: center;
         }
-        .header {
+        /* --- Header/Hero Section --- */
+        .hero-header {
             background-color: var(--dark-green);
-            color: white;
-            padding: 20px 0;
+            color: var(--off-white);
+            padding: 60px 20px;
+            box-shadow: 0 4px 6px var(--shadow-color);
         }
-        .header h1 {
-            margin: 0;
+        .hero-header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
         }
+        .hero-header p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 10px auto;
+            opacity: 0.9;
+        }
+        /* --- Content Layout --- */
         .content {
-            padding: 40px 20px;
-            max-width: 800px;
+            background-color: var(--off-white);
+            padding: 50px 20px;
+            max-width: 1200px;
             margin: 0 auto;
         }
+        .key-features {
+            display: flex;
+            justify-content: space-around;
+            gap: 40px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+        .feature-item {
+            flex-basis: 30%; /* Three items per row on wider screens */
+            text-align: left;
+            padding: 20px;
+            background-color: var(--light-green);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px var(--shadow-color);
+            transition: transform 0.3s;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+        .feature-item h3 {
+            color: var(--mid-green);
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        /* --- Image Mockups Section --- */
+        .mockup-section {
+            background-color: var(--light-green);
+            padding: 60px 20px;
+        }
+        .mockup-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .mockup-container {
+            width: 300px; /* Standard phone mockup width */
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .mockup-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            background-color: #eee; /* Placeholder background */
+            min-height: 400px; /* Ensure placeholder is visible */
+            line-height: 400px;
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        /* --- Call to Action Button --- */
         .signup-button {
             display: inline-block;
-            padding: 15px 30px;
-            margin-top: 30px;
-            background-color: var(--mid-green); /* Main button green */
+            padding: 18px 40px;
+            margin-top: 40px;
+            background-color: var(--mid-green); 
             color: white;
             text-decoration: none;
-            font-size: 1.2em;
+            font-size: 1.4em;
             font-weight: bold;
-            border-radius: 8px;
-            transition: background-color 0.3s;
+            border-radius: 50px; /* Pill shape for a modern look */
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .signup-button:hover {
-            background-color: var(--accent-green);
+            background-color: var(--dark-green);
+            transform: translateY(-2px);
         }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--dark-green);
+            color: var(--accent-green);
+            padding: 20px 0;
+        }
+        .footer a {
+            color: var(--accent-green);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+        .footer a:hover {
+            color: white;
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>🌱 Eco-League: Compete for a Greener Community</h1>
+    <div class="hero-header">
+        <h1>🌳 ZafEco: The Green Family Challenge 🏆</h1>
+        <p>Turning sustainability into a fun, competitive, and highly rewarding family game. Solve the 'silent suffering' of eco-motivation with league progression and real-world impact tracking[cite: 1, 77, 78, 79].</p>
+        <a href="signup.html" class="signup-button">Join the Challenge Today</a>
+    </div>
+
+    <div class="mockup-section">
+        <h2>See Your Impact in Real Time</h2>
+        <div class="mockup-grid">
+            <div class="mockup-container">
+                <div class="mockup-image">
+                     
+                    Dynamic League Leaderboard [cite: 10, 11]
+                </div>
+            </div>
+
+            <div class="mockup-container">
+                <div class="mockup-image">
+                     
+                    Impact Tracking & Visualizations [cite: 32, 47]
+                </div>
+            </div>
+            
+            <div class="mockup-container">
+                <div class="mockup-image">
+                     
+                    AI-Verified Green Action Log [cite: 37, 83]
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="content">
-        <h2>The Gamified Path to Sustainability</h2>
-        <p>A high-quality mobile app prototype designed to help families reduce energy and water consumption through friendly competition and League Progression.</p>
-        
-        <h3>Say 'Hi!' to connectivity, sustainability and collective wins!</h3>
-        <p>Advance through distinct leagues by completing Green Actions and uploading proof verified by AI-Assisted Photo Verification.</p>
-        
-        <a href="signup.html" class="signup-button">Sign Up</a>
+        <h2>How ZafEco Empowers Your Family</h2>
+        <div class="key-features">
+            <div class="feature-item">
+                <h3>Dynamic League System</h3>
+                <p>Compete in Bronze, Silver, Gold, and Platinum leagues, similar to Duolingo[cite: 10, 79]. Top families get exciting rewards like coupons from local businesses[cite: 15, 17].</p>
+            </div>
+            <div class="feature-item">
+                <h3>Points for Real-World Action</h3>
+                <p>Earn individual points for actions like reusing water, donating, and using public transport[cite: 20, 81]. These points combine for a powerful family score[cite: 21, 84].</p>
+            </div>
+            <div class="feature-item">
+                <h3>Verified Accountability</h3>
+                <p>AI-assisted photo verification ensures fairness for actions like reusing water and plastics, reducing manual moderation and increasing credibility[cite: 37, 40].</p>
+            </div>
+            <div class="feature-item">
+                <h3>Personalized Goals</h3>
+                <p>Set weekly goals (e.g., "Reduce electricity by 10%") with realistic suggestions from our AI based on past performance, making goals feel achievable[cite: 27, 28, 29, 86].</p>
+            </div>
+            <div class="feature-item">
+                <h3>Estimated Carbon Reduction</h3>
+                <p>See all your actions translated into estimated $\text{CO}_2$ emission reduction, providing a powerful, motivating impact visualization[cite: 47, 49, 87].</p>
+            </div>
+            <div class="feature-item">
+                <h3>QR Code Donation Proof</h3>
+                <p>Get points instantly when a charity scans your unique QR code, streamlining the donation process and providing verified proof[cite: 43, 44, 89].</p>
+            </div>
+        </div>
     </div>
 
     <div class="footer">
-        <p style="margin-top: 50px; font-size: 0.9em; color: var(--dark-green);">
-            <a href="#" style="color: var(--dark-green); text-decoration: none;">| Leagues | Green Actions | AI Verification | Carbon Tracking |</a>
+        <p style="margin-bottom: 5px;">A High-Quality Prototype for Accelerating Sustainability Goals [cite: 73, 94]</p>
+        <p>
+            <a href="#">For Governments & Utility Sponsors</a> 
+            <a href="#">Eco-Conscious Brands</a> 
+            <a href="#">Read Our Pitch</a>
         </p>
     </div>
     
